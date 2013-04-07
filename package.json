@@ -2,6 +2,7 @@
   "name": "crowdtro",
   "version": "0.0.1",
   "dependencies": {
+    "coffee-script": "1.6.2",
     "es5-shimify": "~0.0.1",
     "express": "3.1.1",
     "hem": "0.2.9",
@@ -9,5 +10,11 @@
     "json2ify": "~0.0.1",
     "mongoose": "3.6.4",
     "spine": "1.0.9"
+  },
+  "devDependencies" : {
+    "cucumber": "0.3.0",
+    "jasmine-node": "1.0.26",
+    "should": "1.2.2",
+    "zombie": "1.4.1"
   }
 }

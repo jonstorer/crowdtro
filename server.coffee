@@ -1,8 +1,9 @@
 express = require('express')
 http    = require('http')
 path    = require('path')
-
 app     = express()
+
+env = process.env.NODE_ENV or 'development'
 
 app.configure ->
   app.set 'port', process.env.PORT || 3000
