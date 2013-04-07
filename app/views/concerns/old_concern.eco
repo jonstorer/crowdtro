@@ -1,7 +1,5 @@
-<div class='row-fluid'>
-  <form>
-    <fieldset>
-      <input type='checkbox' checked> <%= @content %>
-    </fieldset>
-  </form>
-</div>
+<form id='concern-<%= @id %>'>
+  <fieldset>
+    <input type='checkbox' checked> <%= @content %>
+  </fieldset>
+</form>

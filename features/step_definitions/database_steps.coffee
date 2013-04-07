@@ -10,4 +10,9 @@ module.exports = ->
 
   @Given /^a "([^"]+)" Concern exists$/, (content, next) ->
     attrs = { content: content }
-    mongoose.models.Concern.create attrs, next
+    Concern.create attrs, next
+
+  @Given /^the following Concern exists:$/, (table, next) ->
+    for concern in table.hashes()
+      concern.complete = concern.complete == 'true'
+      Concern.create concern, next
