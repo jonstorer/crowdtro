@@ -1,0 +1,7 @@
+<div class='row-fluid'>
+  <form>
+    <fieldset>
+      <input type='checkbox' checked> <%= @content %>
+    </fieldset>
+  </form>
+</div>
