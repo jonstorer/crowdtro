@@ -1,7 +1,11 @@
-should = require 'should'
+should   = require 'should'
+mongoose = require '../../models/db'
 
 module.exports = ->
   @World = require('../support/world').World
+
+  @Before (next) ->
+    mongoose.connection.db.dropDatabase next
 
   @Given /^I am on (.+)$/, (path, next) ->
     @visit @selectorFor(path), next
