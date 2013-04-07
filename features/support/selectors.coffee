@@ -7,6 +7,7 @@ module.exports =
   # Static Selectors
 
   '^the current concerns list$':  '#current-concerns'
+  '^the old concerns list$':      '#old-concerns'
   '^the new concern form$':       'form#new-concern'
   '^the textarea$':               'textarea'
 
