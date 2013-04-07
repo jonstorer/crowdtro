@@ -1,13 +1,13 @@
 <div class='row-fluid' id='current-concerns'>
 </div>
 
-<div class='row-fluid' id='new-concern'>
+<div class='row-fluid'>
   <form id='new-concern'>
     <fieldset>
       <legend>New Concern</legend>
       <textarea rows='5' name='content' class='input-xxlarge'></textarea>
     </fieldset>
-    <button type='submit' class='btn'>Add</button>
+    <input type='submit' class='btn' value='Add'>
   </form>
 </div>
 
