@@ -28,7 +28,7 @@ module.exports = ->
     @browser.fill(element, text)
     next()
 
-  @When /^I press (.*)$/, (button, next) ->
-    buttonSelector = "input[value=#{button}]"
+  @When /^I press "(.*)"$/, (button, next) ->
+    buttonSelector = "input[value='#{button}']"
     @browser.pressButton buttonSelector, next
 
