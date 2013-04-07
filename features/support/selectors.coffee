@@ -14,7 +14,6 @@ module.exports =
 
   'the site': '/'
 
-
   # Fall through
 
   '^(.+)$': (selector) ->
