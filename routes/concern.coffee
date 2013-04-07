@@ -19,5 +19,4 @@ exports.update = (req, res) ->
 
   Concern.findByIdAndUpdate id, { $set: attributes }, (err, concern) ->
     throw err if err
-    console.log concern
     res.json concern
