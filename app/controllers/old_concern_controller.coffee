@@ -1,6 +1,8 @@
 Concern = require 'models/concern'
 
 class OldConcernController extends Spine.Controller
+  className: 'row-fluid'
+
   elements:
     'input[type="checkbox"]': 'checkbox'
 
