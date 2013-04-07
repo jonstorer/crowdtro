@@ -16,5 +16,8 @@
     "jasmine-node": "1.0.26",
     "should": "1.2.2",
     "zombie": "1.4.1"
+  },
+  "scripts" : {
+    "build": "./run_features.sh"
   }
 }
