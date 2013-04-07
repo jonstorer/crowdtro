@@ -31,7 +31,6 @@ class ConcernsController extends Spine.Controller
       else
         @currentConcerns.append((new CurrentConcernController(concern: concern)).el)
 
-
   save: (event) =>
     event.preventDefault()
     concern = new Concern
