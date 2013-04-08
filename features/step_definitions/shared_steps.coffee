@@ -35,13 +35,9 @@ module.exports = ->
   @When /^I check off "([^"]+)"$/, (value, next) ->
     Concern.findOne { content: value }, (err, concern) =>
       throw err if err
-      element = @browser.query("#concern-#{ concern.id } input")
-      element.setAttribute('checked', 'checked')
-      @browser.fire 'change', element, next
+      @browser.check("#concern-#{ concern.id } input", next)
 
   @When /^I uncheck "([^"]+)"$/, (value, next) ->
     Concern.findOne { content: value }, (err, concern) =>
       throw err if err
-      element = @browser.query("#concern-#{ concern.id } input")
-      element.removeAttribute('checked')
-      @browser.fire 'change', element, next
+      @browser.uncheck("#concern-#{ concern.id } input", next)
