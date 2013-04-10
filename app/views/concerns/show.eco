@@ -1,13 +1,13 @@
+<div class='btn-toolbar'>
+  <div class='btn-group'>
+    <a class='btn btn-mini edit' href='#'><i class='icon-edit'></i></a>
+  </div>
+</div>
 <form>
   <fieldset>
     <label class='checkbox'>
       <input type='checkbox' value='complete' <%= if @isComplete() then 'checked' else '' %>>
       <%= @content %>
     </label>
-    <div class='btn-toolbar'>
-      <div class='btn-group'>
-        <a class='btn btn-mini' href='#'><i class='icon-edit'></i></a>
-      </div>
-    </div>
   </fieldset>
 </form>

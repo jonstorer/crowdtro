@@ -22,10 +22,11 @@ module.exports = ->
     should.exist(element, "could not find '#{selector}'")
     next()
 
-  @Then /^(.+) should be visible$/, (namedElement, next) ->
+  @Then /^(.+) should be (visible|hidden)$/, (namedElement, visibility, next) ->
     @selectorFor namedElement, (selector) =>
       element = @browser.query selector
       should.exist(element, "could not find '#{selector}'")
+      @$(selector).is(":#{ visibility }")
       next()
 
   @Then /^I should (not )?see "([^"]+)" within (.+)$/, (negator, text, namedElement, next) ->
@@ -50,9 +51,12 @@ module.exports = ->
     @browser.pressButton buttonSelector, next
 
   @When /^I press (.*)$/, (namedElement, next) ->
-    #throw 'here is where the error is, it all has to do with call backs'
     @selectorFor namedElement, (selector) =>
       @browser.pressButton selector, next
+
+  @When /^I click (.*)$/, (namedElement, next) ->
+    @selectorFor namedElement, (selector) =>
+      @browser.clickLink selector, next
 
   @When /^I check off "([^"]+)"$/, (value, next) ->
     Concern.findOne { content: value }, (err, concern) =>
