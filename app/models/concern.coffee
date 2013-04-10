@@ -5,4 +5,15 @@ class Concern extends Spine.Model
 
   @extend Spine.Model.Ajax
 
+  state: ->
+    if @complete then 'complete' else 'pending'
+
+  isComplete: -> @complete == true
+
+  @complete: ->
+    @select (c) -> c.complete == true
+
+  @pending: ->
+    @select (c) -> c.complete != true
+
 module.exports = Concern
