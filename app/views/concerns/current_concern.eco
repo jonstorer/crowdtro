@@ -1,5 +1,0 @@
-<form id='concern-<%= @id %>'>
-  <fieldset>
-    <input type='checkbox' value='complete'> <%= @content %>
-  </fieldset>
-</form>

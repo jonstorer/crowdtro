@@ -18,21 +18,3 @@
     </div>
   </div>
 </div>
-<div class='container-fluid'>
-  <div class='row-fluid'>
-    <div class='span12'>
-      <h2>Retro</h2>
-    </div><!--/span12-->
-  </div><!--/row-->
-  <div class='row-fluid'>
-    <div class='span9' id='concerns'>
-    </div><!--/span-->
-  </div><!--/row-->
-
-  <hr>
-
-  <footer>
-    <p>&copy; Company 2013</p>
-  </footer>
-
-</div><!--/.fluid-container-->
