@@ -16,10 +16,7 @@ class ConcernItem extends Spine.Controller
       @concern = Concern.findCID @concern.cid
       @setElId()
 
-    html = require('views/concerns/item')(@concern)
-    console.log html
-    @html html
-
+    @html require('views/concerns/item')(@concern)
     @setElId()
 
   setElId: =>

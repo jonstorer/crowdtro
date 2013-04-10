@@ -4,7 +4,6 @@ Feature: User can complete a concern immediately
 
   Scenario: Concerns can be completed immediately
     Given I am on the site
-    When I am on the site
     When I enter "Too many concerns" in the textarea within the new concern form
     And I press "Add"
     Then I should see "Too many concerns" within the current concerns list
