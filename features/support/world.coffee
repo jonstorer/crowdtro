@@ -23,7 +23,7 @@ class World
 
   visit: (url, next) ->
     @browser.visit url, (err, browser, status) =>
-      @$ or= browser.window.$
+      @$ = browser.window.$
       next err, browser, status
 
 module.exports.World = World

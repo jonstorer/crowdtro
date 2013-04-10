@@ -13,11 +13,12 @@ class NewConcern extends Spine.Controller
 
   save: (event) =>
     event.preventDefault()
-    concern = new Concern
+    concern = (new Concern).fromForm(@form)
     concern.one 'save', =>
-      Concern.trigger("concern:#{concern.state()}", concern)
+      Concern.trigger "concern:#{concern.state()}", concern
       @form[0].reset()
 
-    concern.fromForm(@form).save()
+    concern.save()
+
 
 module.exports = NewConcern
