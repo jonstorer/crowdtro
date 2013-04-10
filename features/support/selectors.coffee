@@ -2,7 +2,21 @@ module.exports =
   # Helpers
 
   '^(.*) within (.*)$': (inner, outer, callback) ->
-    "#{@selectorFor(outer)} #{@selectorFor(inner)}"
+    string = "#{inner} within #{outer}"
+    namedElements = [ ]
+    while match = string.match(new RegExp('^(.*) within (.*)$'))
+      namedElements.push match['2']
+      string = match['1']
+
+    namedElements.push string
+
+    namedElements.each (element) =>
+      @selectorFor(element, callback)
+
+
+
+
+    #"#{@selectorFor(outer)} #{@selectorFor(inner)}"
 
   # Dynamic Selectors
 

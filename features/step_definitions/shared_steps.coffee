@@ -50,7 +50,7 @@ module.exports = ->
     @browser.pressButton buttonSelector, next
 
   @When /^I press (.*)$/, (namedElement, next) ->
-    throw 'here is where the error is, it all has to do with call backs'
+    #throw 'here is where the error is, it all has to do with call backs'
     @selectorFor namedElement, (selector) =>
       @browser.pressButton selector, next
 
