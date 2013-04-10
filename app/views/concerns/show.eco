@@ -1,5 +1,13 @@
 <form>
   <fieldset>
-    <input type='checkbox' value='complete' <%= if @isComplete() then 'checked' else '' %>> <%= @content %>
+    <label class='checkbox'>
+      <input type='checkbox' value='complete' <%= if @isComplete() then 'checked' else '' %>>
+      <%= @content %>
+    </label>
+    <div class='btn-toolbar'>
+      <div class='btn-group'>
+        <a class='btn btn-mini' href='#'><i class='icon-edit'></i></a>
+      </div>
+    </div>
   </fieldset>
 </form>

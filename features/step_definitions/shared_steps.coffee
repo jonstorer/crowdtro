@@ -22,7 +22,7 @@ module.exports = ->
     should.exist(element, "could not find '#{selector}'")
     next()
 
-  @Then /^the (.+) should be visible$/, (namedElement, next) ->
+  @Then /^(.+) should be visible$/, (namedElement, next) ->
     @selectorFor namedElement, (selector) =>
       element = @browser.query selector
       should.exist(element, "could not find '#{selector}'")
@@ -48,6 +48,11 @@ module.exports = ->
   @When /^I press "(.*)"$/, (button, next) ->
     buttonSelector = "input[value='#{button}']"
     @browser.pressButton buttonSelector, next
+
+  @When /^I press (.*)$/, (namedElement, next) ->
+    throw 'here is where the error is, it all has to do with call backs'
+    @selectorFor namedElement, (selector) =>
+      @browser.pressButton selector, next
 
   @When /^I check off "([^"]+)"$/, (value, next) ->
     Concern.findOne { content: value }, (err, concern) =>

@@ -1,13 +1,10 @@
 Concern = require 'models/concern'
 
-class ConcernItem extends Spine.Controller
-  className: 'row-fluid'
-
-  elements:
-    'input[type="checkbox"]': 'checkbox'
+class ConcernEdit extends Spine.Controller
+  className: 'row-fluid controller'
 
   events:
-    'change input': 'complete'
+    'submit form': 'save'
 
   constructor: ->
     super
@@ -19,10 +16,11 @@ class ConcernItem extends Spine.Controller
   setElId: =>
     @el.attr('id', "concern-#{@concern.id}-edit")
 
-  complete: =>
-    @concern.complete = @checkbox.is(':checked')
-    @concern.save()
-    Concern.trigger("concern:#{@concern.state()}", @concern)
-    @el.remove()
+  save: =>
+    event.preventDefault()
+    @concern.one 'save', =>
+      @navigate("concerns-#{@concern.id}-show", shim: true)
 
-module.exports = ConcernItem
+    @concern.fromForm(event.target).save()
+
+module.exports = ConcernEdit

@@ -1,12 +1,12 @@
 module.exports =
   # Helpers
 
-  '^(.*) within (.*)$': (inner, outer) ->
+  '^(.*) within (.*)$': (inner, outer, callback) ->
     "#{@selectorFor(outer)} #{@selectorFor(inner)}"
 
   # Dynamic Selectors
 
-  '^"([^"]+)" concerns show element$': (value, callback) =>
+  '^the "([^"]+)" concerns show element$': (value, callback) =>
     Concern = require('mongoose').models.Concern
     Concern.findOne { content: value }, (err, concern) ->
       throw err if err
@@ -15,6 +15,7 @@ module.exports =
   # Static Selectors
 
   '^the current concerns list$':  '.pending'
+  '^the edit icon$':              '.icon-edit'
   '^the old concerns list$':      '.complete'
   '^the new concern form$':       'form#new-concern'
   '^the textarea$':               'textarea'

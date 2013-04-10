@@ -1,13 +1,14 @@
 Concern = require 'models/concern'
 
-class ConcernItem extends Spine.Controller
-  className: 'row-fluid'
+class ConcernShow extends Spine.Controller
+  className: 'row-fluid controller'
 
   elements:
     'input[type="checkbox"]': 'checkbox'
 
   events:
-    'change input': 'complete'
+    'change input':     'complete'
+    'click .icon-edit': 'showEdit'
 
   constructor: ->
     super
@@ -17,11 +18,23 @@ class ConcernItem extends Spine.Controller
       @concern = Concern.findCID @concern.cid
       @setElId()
 
-    @html require('views/concerns/show')(@concern)
+    @render()
     @setElId()
 
   setElId: =>
     @el.attr('id', "concern-#{@concern.id}-show")
+
+  active: =>
+    super
+    @concern = Concern.findCID @concern.cid
+    @render()
+
+  render: =>
+    @html require('views/concerns/show')(@concern)
+
+  showEdit: (event) =>
+    event.preventDefault()
+    @navigate("concerns-#{@concern.id}-edit", shim: true)
 
   complete: =>
     @concern.complete = @checkbox.is(':checked')
@@ -29,4 +42,4 @@ class ConcernItem extends Spine.Controller
     Concern.trigger("concern:#{@concern.state()}", @concern)
     @el.remove()
 
-module.exports = ConcernItem
+module.exports = ConcernShow
