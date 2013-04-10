@@ -10,6 +10,6 @@ Feature: User can complete a concern immediately
     When I check off "Too many concerns"
     Then I should not see "Too many concerns" within the current concerns list
     But I should see "Too many concerns" within the old concerns list
-    When I am on the site
+    #When I am on the site
     Then I should not see "Too many concerns" within the current concerns list
     But I should see "Too many concerns" within the old concerns list
