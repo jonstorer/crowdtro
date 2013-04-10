@@ -1,0 +1,5 @@
+<form>
+  <fieldset>
+    <input type='checkbox' value='complete' <%= if @isComplete() then 'checked' else '' %>> <%= @content %>
+  </fieldset>
+</form>

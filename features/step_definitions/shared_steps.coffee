@@ -5,22 +5,33 @@ Concern  = mongoose.models.Concern
 module.exports = ->
   @World = require('../support/world').World
 
+  @Then /^I wait (\d+) seconds?$/, (seconds, next) ->
+    setTimeout next, parseInt(seconds) * 1000
+
   @Given /^I am on (.+)$/, (path, next) ->
     @visit @selectorFor(path), next
+
+  @Then /^show me the contents of (.+)$/, (namedElement, next) ->
+    selector = @selectorFor namedElement
+    console.log @browser.html selector
+    next()
 
   @Then /^I should see (.+)$/, (namedElement, next) ->
     selector = @selectorFor namedElement
     element = @browser.query selector
-    should.exist(element, "could not find 'form#new-concern")
+    should.exist(element, "could not find '#{selector}'")
     next()
 
   @Then /^I should (not )?see "([^"]+)" within (.+)$/, (negator, text, namedElement, next) ->
     selector = @selectorFor namedElement
+    element = @browser.query selector
+    should.exist(element, "could not find '#{selector}'")
+
     content  = @browser.text selector
     if negator
-      content.should.not.include text, "expected '#{namedElement}' to not include '#{text}'"
+      content.should.not.include text, "expected '#{namedElement} (#{selector})' to not include '#{text}'"
     else
-      content.should.include text, "expected '#{namedElement}' to include '#{text}'"
+      content.should.include text, "expected '#{namedElement} (#{selector})' to include '#{text}'"
     next()
 
   @When /^I enter "([^"]+)" in (.+)$/, (text, namedElement, next) ->

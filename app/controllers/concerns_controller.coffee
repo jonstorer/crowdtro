@@ -40,5 +40,4 @@ class ConcernsController extends Spine.Controller
 
     concern.fromForm(@form).save()
 
-
 module.exports = ConcernsController

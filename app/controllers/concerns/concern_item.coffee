@@ -1,6 +1,6 @@
 Concern = require 'models/concern'
 
-class CurrentConcernController extends Spine.Controller
+class ConcernItem extends Spine.Controller
   className: 'row-fluid'
 
   elements:
@@ -16,7 +16,10 @@ class CurrentConcernController extends Spine.Controller
       @concern = Concern.findCID @concern.cid
       @setElId()
 
-    @html require('views/concerns/current_concern')(@concern)
+    html = require('views/concerns/item')(@concern)
+    console.log html
+    @html html
+
     @setElId()
 
   setElId: =>
@@ -25,8 +28,7 @@ class CurrentConcernController extends Spine.Controller
   complete: =>
     @concern.complete = @checkbox.is(':checked')
     @concern.save()
-    @concern.trigger('complete')
+    Concern.trigger("concern:#{@concern.state()}", @concern)
     @el.remove()
 
-
-module.exports = CurrentConcernController
+module.exports = ConcernItem
