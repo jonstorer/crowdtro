@@ -2,7 +2,15 @@ module.exports =
   # Helpers
 
   '^(.*) within (.*)$': (inner, outer) ->
-    return "#{@selectorFor(outer)} #{@selectorFor(inner)}"
+    "#{@selectorFor(outer)} #{@selectorFor(inner)}"
+
+  # Dynamic Selectors
+
+  '^"([^"]+)" concerns show element$': (value, callback) =>
+    Concern = require('mongoose').models.Concern
+    Concern.findOne { content: value }, (err, concern) ->
+      throw err if err
+      callback("#concern-#{concern.id}-show")
 
   # Static Selectors
 
@@ -20,4 +28,4 @@ module.exports =
   '^(.+)$': (selector) ->
     console.log "\n\nNo selector was found for '#{selector}'"
     console.log "Please do not commit code that uses this into master\n"
-    return selector
+    selector

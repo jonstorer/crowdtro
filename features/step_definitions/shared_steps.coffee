@@ -22,6 +22,12 @@ module.exports = ->
     should.exist(element, "could not find '#{selector}'")
     next()
 
+  @Then /^the (.+) should be visible$/, (namedElement, next) ->
+    @selectorFor namedElement, (selector) =>
+      element = @browser.query selector
+      should.exist(element, "could not find '#{selector}'")
+      next()
+
   @Then /^I should (not )?see "([^"]+)" within (.+)$/, (negator, text, namedElement, next) ->
     selector = @selectorFor namedElement
     element = @browser.query selector

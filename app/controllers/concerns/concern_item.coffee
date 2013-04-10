@@ -1,31 +1,19 @@
 Concern = require 'models/concern'
 
-class ConcernItem extends Spine.Controller
+ConcernShow = require 'controllers/concerns/concern_show'
+ConcernEdit = require 'controllers/concerns/concern_edit'
+
+class ConcernList extends Spine.Stack
   className: 'row-fluid'
 
-  elements:
-    'input[type="checkbox"]': 'checkbox'
+  controllers:
+    show: ConcernShow
+    edit: ConcernEdit
 
-  events:
-    'change input': 'complete'
+  routes:
+    'show':  'show'
+    'edit':  'edit'
 
-  constructor: ->
-    super
+  default: 'show'
 
-    @concern.bind 'save', =>
-      @concern = Concern.findCID @concern.cid
-      @setElId()
-
-    @html require('views/concerns/item')(@concern)
-    @setElId()
-
-  setElId: =>
-    @el.attr('id', 'concern-' + @concern.id)
-
-  complete: =>
-    @concern.complete = @checkbox.is(':checked')
-    @concern.save()
-    Concern.trigger("concern:#{@concern.state()}", @concern)
-    @el.remove()
-
-module.exports = ConcernItem
+module.exports = ConcernList

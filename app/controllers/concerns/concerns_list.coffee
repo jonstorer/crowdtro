@@ -1,4 +1,4 @@
-Concern     = require 'models/concern'
+Concern = require 'models/concern'
 
 ConcernItem = require 'controllers/concerns/concern_item'
 
