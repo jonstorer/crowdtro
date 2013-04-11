@@ -8,7 +8,7 @@ process.env.NODE_ENV ||= 'test'
 server = require '../../server'
 
 # Zombie options
-Browser.site = "http://localhost:#{process.env.PORT}/"
+Browser.site = "http://localhost:#{process.env.PORT}"
 Browser.debug = true if process.env.DEBUG == 'true'
 
 class World
