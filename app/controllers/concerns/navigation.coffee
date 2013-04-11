@@ -4,7 +4,9 @@ class Navigation extends Spine.Controller
   className: 'row-fluid controller'
 
   events:
-    'click .edit': 'showEdit'
+    'click .edit':     'showEdit'
+    'click .complete': 'complete'
+    'click .pending':  'pending'
 
   constructor: ->
     super
@@ -15,11 +17,22 @@ class Navigation extends Spine.Controller
     @render()
 
   render: =>
-    @html require 'views/concerns/navigation'
+    @html(require('views/concerns/navigation')(@concern))
 
   showEdit: (event) =>
     event.preventDefault()
-    console.log "concerns-#{@concern.id}-edit"
     @navigate("concerns-#{@concern.id}-edit", shim: true)
+
+  complete: =>
+    @concern.complete = true
+    @concern.save()
+    Concern.trigger("#{@concern.id}-remove")
+    Concern.trigger("concern:#{@concern.state()}", @concern)
+
+  pending: =>
+    @concern.complete = false
+    @concern.save()
+    Concern.trigger("#{@concern.id}-remove")
+    Concern.trigger("concern:#{@concern.state()}", @concern)
 
 module.exports = Navigation

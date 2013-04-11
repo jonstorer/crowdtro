@@ -20,6 +20,8 @@ module.exports =
       throw err if err
       next("#concern-#{concern.id}")
 
+  '^the (.+) link$': (type, n) -> n ".#{type}"
+
   # Static Selectors
 
   '^the pending concerns list$':   (n) -> n '.pending'
