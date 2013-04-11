@@ -16,10 +16,10 @@ class World
     @browser = new Browser()
     callback(@)
 
-  selectorFor: (locator) ->
+  selectorFor: (locator, callback = (s) -> s) ->
     for regexp, path of selectors
       if match = locator.match(new RegExp(regexp))
-        return if typeof path == 'string' then path else path.apply @, match.slice(1)
+        return path.apply @, match.slice(1).concat [ callback ]
 
   visit: (url, next) ->
     @browser.visit url, (err, browser, status) =>

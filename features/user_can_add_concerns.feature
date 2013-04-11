@@ -7,4 +7,4 @@ Feature: User can add a concern
     Then I should see the new concern form
     When I enter "Too many concerns" in the textarea within the new concern form
     And I press "Add"
-    Then I should see "Too many concerns" within the current concerns list
+    Then I should see "Too many concerns" within the pending concerns list

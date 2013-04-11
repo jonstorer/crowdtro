@@ -22,6 +22,13 @@ module.exports = ->
     should.exist(element, "could not find '#{selector}'")
     next()
 
+  @Then /^(.+) should be (visible|hidden)$/, (namedElement, visibility, next) ->
+    @selectorFor namedElement, (selector) =>
+      element = @browser.query selector
+      should.exist(element, "could not find '#{selector}'")
+      @$(selector).is(":#{ visibility }")
+      next()
+
   @Then /^I should (not )?see "([^"]+)" within (.+)$/, (negator, text, namedElement, next) ->
     selector = @selectorFor namedElement
     element = @browser.query selector
@@ -42,6 +49,10 @@ module.exports = ->
   @When /^I press "(.*)"$/, (button, next) ->
     buttonSelector = "input[value='#{button}']"
     @browser.pressButton buttonSelector, next
+
+  @When /^I click (.*)$/, (namedElement, next) ->
+    @selectorFor namedElement, (selector) =>
+      @browser.clickLink selector, next
 
   @When /^I check off "([^"]+)"$/, (value, next) ->
     Concern.findOne { content: value }, (err, concern) =>
