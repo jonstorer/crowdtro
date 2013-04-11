@@ -23,16 +23,18 @@ class Navigation extends Spine.Controller
     event.preventDefault()
     @navigate("concerns-#{@concern.id}-edit", shim: true)
 
-  complete: =>
-    @concern.complete = true
+
+  save: =>
     @concern.save()
     Concern.trigger("#{@concern.id}-remove")
     Concern.trigger("concern:#{@concern.state()}", @concern)
 
+  complete: =>
+    @concern.complete = true
+    @save()
+
   pending: =>
     @concern.complete = false
-    @concern.save()
-    Concern.trigger("#{@concern.id}-remove")
-    Concern.trigger("concern:#{@concern.state()}", @concern)
+    @save()
 
 module.exports = Navigation
