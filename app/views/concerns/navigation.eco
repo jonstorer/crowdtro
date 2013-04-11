@@ -1,0 +1,5 @@
+<div class='btn-toolbar'>
+  <div class='btn-group'>
+    <a class='btn btn-mini edit' href='#'><i class='icon-edit'></i></a>
+  </div>
+</div>

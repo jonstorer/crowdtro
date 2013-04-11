@@ -1,0 +1,6 @@
+<form>
+  <fieldset>
+    <textarea rows='3' name='content' class='input-xxlarge'><%= @content %></textarea>
+  </fieldset>
+  <input type='submit' class='btn' value='Save'>
+</form>

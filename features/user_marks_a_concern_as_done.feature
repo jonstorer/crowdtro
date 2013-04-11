@@ -5,7 +5,7 @@ Feature: User can add a concern
   Scenario: LongActions loading state displays a spinner
     Given a "Too many concerns" Concern exists
     And I am on the site
-    Then I should see "Too many concerns" within the current concerns list
+    Then I should see "Too many concerns" within the pending concerns list
     When I check off "Too many concerns"
-    Then I should not see "Too many concerns" within the current concerns list
-    But I should see "Too many concerns" within the old concerns list
+    Then I should not see "Too many concerns" within the pending concerns list
+    But I should see "Too many concerns" within the complete concerns list

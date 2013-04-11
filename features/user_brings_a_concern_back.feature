@@ -7,7 +7,7 @@ Feature: User can bring a concern back from done
       | content          | complete |
       | Unhealthy snacks | true     |
     And I am on the site
-    Then I should see "Unhealthy snacks" within the old concerns list
+    Then I should see "Unhealthy snacks" within the complete concerns list
     When I uncheck "Unhealthy snacks"
-    Then I should not see "Unhealthy snacks" within the old concerns list
-    But I should see "Unhealthy snacks" within the current concerns list
+    Then I should not see "Unhealthy snacks" within the complete concerns list
+    But I should see "Unhealthy snacks" within the pending concerns list
