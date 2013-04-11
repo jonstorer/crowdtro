@@ -10,31 +10,27 @@ class Navigation extends Spine.Controller
 
   constructor: ->
     super
-
-    @concern.bind 'save', =>
-      @concern = Concern.findCID @concern.cid
-      @render()
-    @render()
-
-  render: =>
     @html(require('views/concerns/navigation')(@concern))
 
   showEdit: (event) =>
     event.preventDefault()
-    @navigate("concerns-#{@concern.id}-edit", shim: true)
+    @navigate("concerns-#{ @concern.cid }-edit", shim: true)
 
-
-  save: =>
-    @concern.save()
-    Concern.trigger("#{@concern.id}-remove")
-    Concern.trigger("concern:#{@concern.state()}", @concern)
-
-  complete: =>
+  complete: (event) =>
+    event.preventDefault()
     @concern.complete = true
     @save()
 
-  pending: =>
+  pending: (event) =>
+    event.preventDefault()
     @concern.complete = false
     @save()
+
+  save: =>
+    @concern.bind 'save', =>
+      @concern.trigger 'remove'
+      Concern.trigger("concern:#{ @concern.state() }", @concern)
+
+    @concern.save()
 
 module.exports = Navigation
