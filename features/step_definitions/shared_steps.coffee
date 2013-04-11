@@ -11,6 +11,9 @@ module.exports = ->
   @Given /^I am on (.+)$/, (path, next) ->
     @visit @selectorFor(path), next
 
+  @Given /^I reload the page$/, (next) ->
+    @browser.reload next
+
   @Then /^show me the contents of (.+)$/, (namedElement, next) ->
     selector = @selectorFor namedElement
     console.log @browser.html selector

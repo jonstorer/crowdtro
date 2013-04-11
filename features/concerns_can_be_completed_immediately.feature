@@ -10,6 +10,6 @@ Feature: User can complete a concern immediately
     When I click the complete link within the "Too many concerns" concerns element
     Then I should not see "Too many concerns" within the pending concerns list
     But I should see "Too many concerns" within the complete concerns list
-    When I am on the site
+    When I reload the page
     Then I should not see "Too many concerns" within the pending concerns list
     But I should see "Too many concerns" within the complete concerns list

@@ -4,25 +4,18 @@ class Navigation extends Spine.Controller
   className: 'row-fluid controller'
 
   events:
-    'click .edit':     'showEdit'
+    'click .edit':     'edit'
     'click .complete': 'complete'
     'click .pending':  'pending'
     'click .delete':   'destroy'
 
   constructor: ->
     super
-
-    @concern.bind 'save', =>
-      @concern = Concern.findCID @concern.cid
-      @render()
-    @render()
-
-  render: =>
     @html(require('views/concerns/navigation')(@concern))
 
-  showEdit: (event) =>
+  edit: (event) =>
     event.preventDefault()
-    @navigate("concerns-#{@concern.id}-edit", shim: true)
+    @navigate("concerns-#{ @concern.cid }-edit", shim: true)
 
   destroy: (event) =>
     event.preventDefault()
@@ -40,8 +33,10 @@ class Navigation extends Spine.Controller
     @save()
 
   save: =>
+    @concern.bind 'save', =>
+      @concern.trigger 'remove'
+      Concern.trigger("concern:#{ @concern.state() }", @concern)
+
     @concern.save()
-    Concern.trigger("#{@concern.id}-remove")
-    Concern.trigger("concern:#{@concern.state()}", @concern)
 
 module.exports = Navigation

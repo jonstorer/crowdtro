@@ -1,6 +1,8 @@
 Concern = require 'models/concern'
 
 class New extends Spine.Controller
+  className: 'row-fluid concern-new'
+
   elements:
     'form': 'form'
 
