@@ -11,13 +11,17 @@ module.exports =
   '^the "([^"]+)" concerns (show|edit) element$': (value, type, next) =>
     Concern = require('mongoose').models.Concern
     Concern.findOne { content: value }, (err, concern) ->
-      throw err if err
+      if err
+        console.log err
+        throw err
       next("#concern-#{concern.id} .#{type}-concern")
 
   '^the "([^"]+)" concerns element$': (value, next) =>
     Concern = require('mongoose').models.Concern
     Concern.findOne { content: value }, (err, concern) ->
-      throw err if err
+      if err
+        console.log err
+        throw err
       next("#concern-#{concern.id}")
 
   '^the (.+) link$': (type, n) -> n ".#{type}"
