@@ -23,6 +23,7 @@ class World
 
   visit: (url, next) ->
     @browser.visit url, (err, browser, status) =>
+      console.log err if err
       @$ = browser.window.$
       next err, browser, status
 

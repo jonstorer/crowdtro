@@ -10,3 +10,6 @@ Feature: User can add a concern
     When I click the delete link within the "So Many" concerns element
     Then I should not see "So Many" within the pending concerns list
     And I should not see "So Many" within the complete concerns list
+    When I am on the site
+    Then I should not see "So Many" within the pending concerns list
+    And I should not see "So Many" within the complete concerns list

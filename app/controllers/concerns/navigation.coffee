@@ -24,7 +24,8 @@ class Navigation extends Spine.Controller
     event.preventDefault()
     @navigate("concerns-#{@concern.id}-edit", shim: true)
 
-  destroy: =>
+  destroy: (event) =>
+    event.preventDefault()
     @concern.destroy()
     Concern.trigger("#{@concern.id}-remove")
 
