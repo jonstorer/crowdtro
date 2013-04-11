@@ -8,6 +8,6 @@ Feature: User can bring a concern back from done
       | Unhealthy snacks | true     |
     And I am on the site
     Then I should see "Unhealthy snacks" within the complete concerns list
-    When I uncheck "Unhealthy snacks"
+    When I click the pending link within the "Unhealthy snacks" concerns element
     Then I should not see "Unhealthy snacks" within the complete concerns list
     But I should see "Unhealthy snacks" within the pending concerns list
