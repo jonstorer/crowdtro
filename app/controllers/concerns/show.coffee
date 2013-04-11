@@ -5,15 +5,6 @@ class ConcernShow extends Spine.Controller
 
   constructor: ->
     super
-    @concern = @stack.concern
-    @render()
-
-  active: =>
-    super
-    @concern = Concern.findCID @concern.cid
-    @render()
-
-  render: =>
-    @html require('views/concerns/show')(@concern)
+    @html require('views/concerns/show')(@stack.concern)
 
 module.exports = ConcernShow

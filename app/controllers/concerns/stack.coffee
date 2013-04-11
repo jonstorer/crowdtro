@@ -13,22 +13,12 @@ class Stack extends Spine.Stack
   default: 'show'
 
   constructor: (options) ->
+    @routes["concerns-#{ options.concern.cid }-show"] = 'show'
+    @routes["concerns-#{ options.concern.cid }-edit"] = 'edit'
+
     super
 
-    @concern.bind 'save', =>
+    @concern.bind 'ajaxSuccess', =>
       @concern = Concern.findCID @concern.cid
-      @setRoutes()
-    @setRoutes()
-
-  setRoutes: =>
-    @routes["concerns-#{@concern.id}-show"] = 'show'
-    @routes["concerns-#{@concern.id}-edit"] = 'edit'
-
-    #this was ripped from spine internals
-    for key, value of @routes
-      do (key, value) =>
-        callback = value if typeof value is 'function'
-        callback or= => @[value].active(arguments...)
-        @route(key, callback)
 
 module.exports = Stack
