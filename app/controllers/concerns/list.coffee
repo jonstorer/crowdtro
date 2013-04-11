@@ -1,8 +1,8 @@
 Concern = require 'models/concern'
 
-ConcernItem = require 'controllers/concerns/concern_item'
+Item = require 'controllers/concerns/item'
 
-class ConcernList extends Spine.Controller
+class List extends Spine.Controller
   className: 'row-fluid'
 
   constructor: ->
@@ -15,6 +15,6 @@ class ConcernList extends Spine.Controller
     @renderOne(concern) for concern in Concern[@type]()
 
   renderOne: (concern) =>
-    @append new ConcernItem(concern: concern)
+    @append new Item(concern: concern)
 
-module.exports = ConcernList
+module.exports = List

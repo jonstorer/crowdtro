@@ -1,6 +1,6 @@
-Concern                  = require 'models/concern'
+Concern = require 'models/concern'
 
-class NewConcern extends Spine.Controller
+class New extends Spine.Controller
   elements:
     'form': 'form'
 
@@ -20,5 +20,4 @@ class NewConcern extends Spine.Controller
 
     concern.save()
 
-
-module.exports = NewConcern
+module.exports = New

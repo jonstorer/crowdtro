@@ -1,7 +1,7 @@
 Concern = require 'models/concern'
 
-ConcernsList = require 'controllers/concerns/concerns_list'
-NewConcern   = require 'controllers/concerns/new_concern'
+List = require 'controllers/concerns/list'
+New  = require 'controllers/concerns/new'
 
 class ConcernsController extends Spine.Controller
   className: 'container-fluid'
@@ -9,9 +9,9 @@ class ConcernsController extends Spine.Controller
   constructor: ->
     super
 
-    @append new ConcernsList type: 'pending'
-    @append new NewConcern
-    @append new ConcernsList type: 'complete'
+    @append new List type: 'pending'
+    @append new New
+    @append new List type: 'complete'
 
     Concern.fetch()
 

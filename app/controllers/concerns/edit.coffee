@@ -1,6 +1,6 @@
 Concern = require 'models/concern'
 
-class ConcernEdit extends Spine.Controller
+class Edit extends Spine.Controller
   className: 'row-fluid controller edit-concern'
 
   events:
@@ -26,4 +26,4 @@ class ConcernEdit extends Spine.Controller
 
     @concern.fromForm(event.target).save()
 
-module.exports = ConcernEdit
+module.exports = Edit
