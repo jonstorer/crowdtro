@@ -7,6 +7,7 @@ class Navigation extends Spine.Controller
     'click .edit':     'showEdit'
     'click .complete': 'complete'
     'click .pending':  'pending'
+    'click .delete':   'destroy'
 
   constructor: ->
     super
@@ -23,18 +24,24 @@ class Navigation extends Spine.Controller
     event.preventDefault()
     @navigate("concerns-#{@concern.id}-edit", shim: true)
 
+  destroy: =>
+    @concern.destroy()
+    Concern.trigger("#{@concern.id}-remove")
+
+  complete: (event) =>
+    event.preventDefault()
+    @concern.complete = true
+    @save()
+
+  pending: (event) =>
+    event.preventDefault()
+    @concern.complete = false
+    @save()
 
   save: =>
     @concern.save()
     Concern.trigger("#{@concern.id}-remove")
     Concern.trigger("concern:#{@concern.state()}", @concern)
 
-  complete: =>
-    @concern.complete = true
-    @save()
-
-  pending: =>
-    @concern.complete = false
-    @save()
 
 module.exports = Navigation
