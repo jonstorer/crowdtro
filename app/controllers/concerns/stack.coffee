@@ -1,14 +1,14 @@
 Concern = require 'models/concern'
 
-ConcernShow = require 'controllers/concerns/concern_show'
-ConcernEdit = require 'controllers/concerns/concern_edit'
+Show = require 'controllers/concerns/show'
+Edit = require 'controllers/concerns/edit'
 
-class ConcernItem extends Spine.Stack
+class Stack extends Spine.Stack
   className: 'row-fluid stack'
 
   controllers:
-    show: ConcernShow
-    edit: ConcernEdit
+    show: Show
+    edit: Edit
 
   default: 'show'
 
@@ -31,4 +31,4 @@ class ConcernItem extends Spine.Stack
         callback or= => @[value].active(arguments...)
         @route(key, callback)
 
-module.exports = ConcernItem
+module.exports = Stack
