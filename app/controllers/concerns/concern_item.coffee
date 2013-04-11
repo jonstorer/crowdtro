@@ -1,21 +1,27 @@
-Concern = require 'models/concern'
+Concern           = require 'models/concern'
+ConcernNavigation = require 'controllers/concerns/concern_navigation'
+ConcernStack      = require 'controllers/concerns/concern_stack'
 
-ConcernShow = require 'controllers/concerns/concern_show'
-ConcernEdit = require 'controllers/concerns/concern_edit'
+class ConcernItem extends Spine.Controller
+  className: 'row-fluid controller'
 
-class ConcernList extends Spine.Stack
-  className: 'row-fluid stack'
-
-  controllers:
-    show: ConcernShow
-    edit: ConcernEdit
-
-  default: 'show'
-
-  constructor: (options) ->
-    @routes["concerns-#{options.concern.id}-show"] = 'show'
-    @routes["concerns-#{options.concern.id}-edit"] = 'edit'
-
+  constructor: ->
     super
+    @append new ConcernNavigation(concern: @concern)
+    @append new ConcernStack(concern: @concern)
 
-module.exports = ConcernList
+    Concern.bind "#{@concern.id}-remove", => @el.remove()
+
+    @concern.bind 'save', =>
+      Concern.unbind "#{@concern.id}-remove"
+      @concern = Concern.findCID @concern.cid
+      Concern.bind "#{@concern.id}-remove", => @el.remove()
+      @setElId()
+
+    @setElId()
+
+
+  setElId: =>
+    @el.attr('id', "concern-#{ @concern.id }")
+
+module.exports = ConcernItem

@@ -50,10 +50,6 @@ module.exports = ->
     buttonSelector = "input[value='#{button}']"
     @browser.pressButton buttonSelector, next
 
-  @When /^I press (.*)$/, (namedElement, next) ->
-    @selectorFor namedElement, (selector) =>
-      @browser.pressButton selector, next
-
   @When /^I click (.*)$/, (namedElement, next) ->
     @selectorFor namedElement, (selector) =>
       @browser.clickLink selector, next

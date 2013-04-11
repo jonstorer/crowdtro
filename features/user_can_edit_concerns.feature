@@ -8,6 +8,6 @@ Feature: User can add a concern
       | So Many |
     Given I am on the site
     Then the "So Many" concerns show element should be visible
-    When I click the edit link within the "So Many" concerns show element
+    When I click the edit link within the "So Many" concerns element
     Then the "So Many" concerns show element should be hidden
     Then the "So Many" concerns edit element should be visible

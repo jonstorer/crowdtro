@@ -1,7 +1,7 @@
 Concern = require 'models/concern'
 
 class ConcernEdit extends Spine.Controller
-  className: 'row-fluid controller'
+  className: 'row-fluid controller edit-concern'
 
   events:
     'submit form': 'save'
@@ -11,10 +11,6 @@ class ConcernEdit extends Spine.Controller
     @concern = @stack.concern
 
     @html require('views/concerns/edit')(@concern)
-    @setElId()
-
-  setElId: =>
-    @el.attr('id', "concern-#{@concern.id}-edit")
 
   save: =>
     event.preventDefault()

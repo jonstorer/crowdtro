@@ -8,20 +8,27 @@ module.exports =
 
   # Dynamic Selectors
 
-  '^the "([^"]+)" concerns (show|edit) element$': (value, type, next) ->
+  '^the "([^"]+)" concerns (show|edit) element$': (value, type, next) =>
     Concern = require('mongoose').models.Concern
     Concern.findOne { content: value }, (err, concern) ->
       throw err if err
-      next("#concern-#{concern.id}-#{type}")
+      next("#concern-#{concern.id} .#{type}-concern")
+
+
+  '^the "([^"]+)" concerns element$': (value, next) =>
+    Concern = require('mongoose').models.Concern
+    Concern.findOne { content: value }, (err, concern) ->
+      throw err if err
+      next("#concern-#{concern.id}")
 
 
   # Static Selectors
 
-  '^the current concerns list$': (n) -> n '.pending'
-  '^the edit link$':             (n) -> n '.edit'
-  '^the old concerns list$':     (n) -> n '.complete'
-  '^the new concern form$':      (n) -> n 'form#new-concern'
-  '^the textarea$':              (n) -> n 'textarea'
+  '^the pending concerns list$':   (n) -> n '.pending'
+  '^the edit link$':               (n) -> n '.edit'
+  '^the complete concerns list$':  (n) -> n '.complete'
+  '^the new concern form$':        (n) -> n 'form#new-concern'
+  '^the textarea$':                (n) -> n 'textarea'
 
   # Paths
 
