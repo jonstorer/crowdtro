@@ -1,6 +1,6 @@
 Concern = require 'models/concern'
 
-class ConcernNavigation extends Spine.Controller
+class Navigation extends Spine.Controller
   className: 'row-fluid controller'
 
   events:
@@ -22,4 +22,4 @@ class ConcernNavigation extends Spine.Controller
     console.log "concerns-#{@concern.id}-edit"
     @navigate("concerns-#{@concern.id}-edit", shim: true)
 
-module.exports = ConcernNavigation
+module.exports = Navigation
