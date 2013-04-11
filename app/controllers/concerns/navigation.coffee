@@ -43,5 +43,4 @@ class Navigation extends Spine.Controller
     Concern.trigger("#{@concern.id}-remove")
     Concern.trigger("concern:#{@concern.state()}", @concern)
 
-
 module.exports = Navigation
