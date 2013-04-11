@@ -10,6 +10,12 @@ class ConcernEdit extends Spine.Controller
     super
     @concern = @stack.concern
 
+    @concern.bind 'save', =>
+      @concern = Concern.findCID @concern.cid
+      @render()
+    @render()
+
+  render: =>
     @html require('views/concerns/edit')(@concern)
 
   save: =>

@@ -10,15 +10,18 @@ class ConcernItem extends Spine.Controller
     @append new ConcernNavigation(concern: @concern)
     @append new ConcernStack(concern: @concern)
 
-    Concern.bind "#{@concern.id}-remove", => @el.remove()
 
     @concern.bind 'save', =>
-      Concern.unbind "#{@concern.id}-remove"
       @concern = Concern.findCID @concern.cid
-      Concern.bind "#{@concern.id}-remove", => @el.remove()
       @setElId()
+      @bindRemove()
 
     @setElId()
+    @bindRemove()
+
+  bindRemove: =>
+    Concern.bind "#{@concern.id}-remove", => @el.remove()
+
 
 
   setElId: =>
