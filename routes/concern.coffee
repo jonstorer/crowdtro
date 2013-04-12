@@ -13,10 +13,19 @@ exports.create = (req, res) ->
     res.json 201, concern
 
 exports.update = (req, res) ->
+  id = req.route.params.id
   attributes = req.body
-  id = attributes.id
   delete attributes.id
 
   Concern.findByIdAndUpdate id, { $set: attributes }, (err, concern) ->
+    throw err if err
+    res.json concern
+
+exports.delete = (req, res) ->
+  id = req.route.params.id
+  attributes = req.body
+  delete attributes.id
+
+  Concern.findByIdAndRemove id, (err, concern) ->
     throw err if err
     res.json concern

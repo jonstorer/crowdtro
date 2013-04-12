@@ -20,9 +20,10 @@ app.configure 'development', ->
 concern = require('./routes/concern')
 spine   = require('./routes/spine')
 
-app.get  '/concerns',     concern.index
-app.post '/concerns',     concern.create
-app.put  '/concerns/:id', concern.update
+app.get    '/concerns',     concern.index
+app.post   '/concerns',     concern.create
+app.put    '/concerns/:id', concern.update
+app.delete '/concerns/:id', concern.delete
 
 app.get '/crowdtro.css', spine.css
 app.get '/crowdtro.js',  spine.js
