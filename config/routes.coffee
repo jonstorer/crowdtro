@@ -2,9 +2,8 @@ homes        = require('../routes/homes')
 auth         = require('../routes/auth')
 concern      = require('../routes/concern')
 spine        = require('../routes/spine')
-authenitcate = require('../routes/middleware').authenticate
+authenticate = require('../routes/middleware').authenticate
 passport     = require('./passport')
-
 
 module.exports = (app) ->
 
