@@ -19,6 +19,7 @@
     "zombie": "1.4.1"
   },
   "scripts" : {
-    "build": "./run_features.sh"
+    "build": "./run_features.sh",
+    "test": "./builder.sh"
   }
 }
