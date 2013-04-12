@@ -4,10 +4,6 @@ Spine    = require('spine')
 Concerns = require 'controllers/concerns'
 
 class Crowdtro extends Spine.Controller
-
-  elements:
-    '#concerns': 'concerns'
-
   constructor: ->
     super
 

@@ -2,6 +2,7 @@ Feature: User can complete a concern immediately
   In order to keep track of concerns during retro
   A user can complete concerns immediately
 
+  @wip
   Scenario: Concerns can be completed immediately
     Given I am on the site
     When I enter "Too many concerns" in the textarea within the new concern form
