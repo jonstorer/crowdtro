@@ -20,7 +20,6 @@ class Navigation extends Spine.Controller
   destroy: (event) =>
     event.preventDefault()
     @concern.destroy()
-    Concern.trigger("#{@concern.id}-remove")
 
   complete: (event) =>
     event.preventDefault()
