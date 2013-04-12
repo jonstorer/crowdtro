@@ -1,1 +1,1 @@
-web: serveup ./public
+web: ./node_modules/.bin/coffee server.coffee

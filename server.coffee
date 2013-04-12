@@ -3,6 +3,8 @@ http    = require('http')
 path    = require('path')
 app     = express()
 
+require './config/monitoring'
+
 app.configure ->
   app.set 'port', process.env.PORT || 3000
   app.use express.favicon()
