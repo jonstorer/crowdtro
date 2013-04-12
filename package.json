@@ -10,6 +10,8 @@
     "json2ify": "~0.0.1",
     "mongoose": "3.6.4",
     "nodetime": "0.8.12",
+    "passport": "0.1.16",
+    "passport-google": "0.3.0",
     "spine": "1.0.9"
   },
   "devDependencies" : {

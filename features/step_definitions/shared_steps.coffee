@@ -19,10 +19,14 @@ module.exports = ->
     console.log @browser.html selector
     next()
 
-  @Then /^I should see (.+)$/, (namedElement, next) ->
+  @Then /^I should (not )?see (.+)$/, (negator, namedElement, next) ->
     selector = @selectorFor namedElement
-    element = @browser.query selector
-    should.exist(element, "could not find '#{selector}'")
+    element  = @browser.query selector
+    if negator
+      should.not.exist(element, "should not have find '#{selector}', but did")
+    else
+      should.exist(element, "could not find '#{selector}'")
+
     next()
 
   @Then /^(.+) should be (visible|hidden)$/, (namedElement, visibility, next) ->
