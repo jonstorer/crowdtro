@@ -1,6 +1,4 @@
 module.exports =
-  auth: (req, res) ->
-    res.redirect('/')
-
   callback: (req, res) ->
+    req.session.user_id = req.user.id
     res.redirect('/')

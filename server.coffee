@@ -1,3 +1,5 @@
+require './config/monitoring'
+
 app = require('express')()
 
 require('./config/boot')(app)

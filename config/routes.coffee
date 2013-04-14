@@ -7,12 +7,16 @@ passport     = require('./passport')
 
 module.exports = (app) ->
 
-  app.get '/',       authenticate, homes.show
-  app.get '/login',                homes.login
-  app.get '/logout',               homes.logout
+  app.all /^\/((?!auth|login|stylesheets|javascripts).*)/, authenticate
 
-  app.get '/auth/google_apps',          passport.authenticate('google', { failureRedirect: '/login' }), auth.auth
-  app.get '/auth/google_apps/callback', passport.authenticate('google', { failureRedirect: '/login' }), auth.callback
+  app.get '/',        homes.show
+  app.get '/login',   homes.login
+  app.get '/logout',  homes.logout
+
+  strategy = passport.authenticate('google', { failureRedirect: '/login', failureFlash: true })
+
+  app.get '/auth/google_apps',          strategy
+  app.get '/auth/google_apps/callback', strategy, auth.callback
 
   app.get    '/concerns',     concern.index
   app.post   '/concerns',     concern.create
