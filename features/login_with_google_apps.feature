@@ -5,5 +5,5 @@ Feature: User is required to log in with google apps
   Scenario: Visitor must log in with google apps
     Given I am on the site
     Then I should not see the new concern form
-    When I press "Google"
+    When I click "Google Apps"
     Then I should see the new concern form

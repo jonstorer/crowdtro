@@ -61,6 +61,9 @@ module.exports = ->
     @selectorFor namedElement, (selector) =>
       @browser.clickLink selector, next
 
+  @When /^I click "([^"]+)"$/, (link, next) ->
+    @browser.clickLink link, next
+
   @When /^I check off "([^"]+)"$/, (value, next) ->
     Concern.findOne { content: value }, (err, concern) =>
       throw err if err

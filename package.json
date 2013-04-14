@@ -20,6 +20,7 @@
   "devDependencies" : {
     "cucumber": "0.3.0",
     "jasmine-node": "1.0.26",
+    "nock": "0.17.3",
     "should": "1.2.2",
     "zombie": "1.4.1"
   },
