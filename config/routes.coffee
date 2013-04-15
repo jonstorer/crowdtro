@@ -11,7 +11,6 @@ module.exports = (app) ->
   routes += '|login_for_test' if process.env.NODE_ENV == 'test'
   routes = new RegExp("^\/((?!#{routes}).*)")
 
-  console.log routes
   app.all routes, authenticate
 
   app.get '/',        homes.show
