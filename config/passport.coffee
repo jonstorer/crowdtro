@@ -9,8 +9,8 @@ options =
   returnURL: 'http://localhost:3000/auth/google_apps/callback',
   realm:     'http://localhost:3000/'
 
-passport.use new GoogleStrategy options,  (identifier, profile, callback) ->
-  if (new RegExp('(crowdtap.com)$')).test(profile.emails[0].value)
+passport.use new GoogleStrategy options, (identifier, profile, callback) ->
+  if (new RegExp('@crowdtap.com$')).test(profile.emails[0].value)
     auth_hash = profile
     auth_hash.identifier = identifier
     User.findOrCreateFromAuthHash auth_hash, callback
