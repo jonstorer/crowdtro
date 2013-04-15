@@ -5,11 +5,8 @@ module.exports =
     res.status(200).sendfile path.join __dirname, '..', 'public', 'index.html'
 
   login: (req, res) ->
-    errorMessage = req.flash 'error'
-    if req.isAuthenticated()
-      req.session = null
-      req.logout()
-    res.render 'login', { message: errorMessage }
+    res.render 'login', { message: req.flash 'error' }
 
   logout: (req, res) ->
+    req.logout()
     res.redirect('/login')

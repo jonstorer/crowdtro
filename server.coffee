@@ -1,8 +1,10 @@
+env = process.env.NODE_ENV || 'development'
+
 require './config/monitoring'
 
 app = require('express')()
 
-require('./config/boot')(app)
+require("./config/environments/#{env}")(app)
 require('./config/routes')(app)
 
 http = require('http')
