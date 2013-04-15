@@ -30,6 +30,6 @@
   "engineStrict": true,
   "scripts" : {
     "build": "./run_features.sh",
-    "test": "./builder.sh"
+    "test": "./node_modules/.bin/cucumber.js -t ~@wip"
   }
 }
