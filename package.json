@@ -24,6 +24,9 @@
     "should": "1.2.2",
     "zombie": "1.4.1"
   },
+  "engines" : {
+    "node" : "<0.10.0"
+  },
   "scripts" : {
     "build": "./run_features.sh",
     "test": "./builder.sh"
