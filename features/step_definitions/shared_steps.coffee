@@ -6,7 +6,7 @@ User     = mongoose.models.User
 module.exports = ->
   @World = require('../support/world').World
 
-  @Then /^I am logged in as:$/, (table, next) ->
+  @Then /^I (?:am logged|log) in as:$/, (table, next) ->
     @visit '/login', =>
       User.create table.hashes()[0], (err, user) =>
         @$.post "/login_for_test/#{user.id}", (user, status, xhr) ->
@@ -16,8 +16,13 @@ module.exports = ->
   @Then /^I wait (\d+) seconds?$/, (seconds, next) ->
     setTimeout next, parseInt(seconds) * 1000
 
-  @Given /^I am on (.+)$/, (path, next) ->
+  @Given /^I (?:am on|go to) (.+)$/, (path, next) ->
     @visit @selectorFor(path), next
+
+  @Given /^I should be on (.+)$/, (path, next) ->
+    path = @selectorFor(path)
+    path.should.eql @browser.window.location.pathname
+    next()
 
   @Given /^I reload the page$/, (next) ->
     @browser.reload next
