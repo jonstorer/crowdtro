@@ -13,7 +13,7 @@ Browser.debug = true if process.env.DEBUG == 'true'
 
 class World
   constructor: (callback) ->
-    @browser = new Browser()
+    @browser       = new Browser()
 
     callback(@)
 

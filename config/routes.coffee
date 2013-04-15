@@ -13,7 +13,10 @@ module.exports = (app) ->
   app.get '/login',   homes.login
   app.get '/logout',  homes.logout
 
-  strategy = passport.authenticate('google', { successRedirect: '/',  failureRedirect: '/login', failureFlash: true })
+  strategy = passport.authenticate 'google',
+    successRedirect: '/'
+    failureRedirect: '/login'
+    failureFlash:    true
 
   app.get '/auth/google_apps',          strategy
   app.get '/auth/google_apps/callback', strategy
