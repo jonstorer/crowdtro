@@ -1,15 +1,28 @@
 should   = require 'should'
 mongoose = require 'mongoose'
 Concern  = mongoose.models.Concern
+User     = mongoose.models.User
 
 module.exports = ->
   @World = require('../support/world').World
 
+  @Then /^I (?:am logged|log) in as:$/, (table, next) ->
+    @visit '/login', =>
+      User.create table.hashes()[0], (err, user) =>
+        @$.post "/login_for_test/#{user.id}", (user, status, xhr) ->
+          throw 'failed' if status != 'success'
+          next()
+
   @Then /^I wait (\d+) seconds?$/, (seconds, next) ->
     setTimeout next, parseInt(seconds) * 1000
 
-  @Given /^I am on (.+)$/, (path, next) ->
+  @Given /^I (?:am on|go to) (.+)$/, (path, next) ->
     @visit @selectorFor(path), next
+
+  @Given /^I should be on (.+)$/, (path, next) ->
+    path = @selectorFor(path)
+    path.should.eql @browser.window.location.pathname
+    next()
 
   @Given /^I reload the page$/, (next) ->
     @browser.reload next
@@ -19,10 +32,14 @@ module.exports = ->
     console.log @browser.html selector
     next()
 
-  @Then /^I should see (.+)$/, (namedElement, next) ->
+  @Then /^I should (not )?see (.+)$/, (negator, namedElement, next) ->
     selector = @selectorFor namedElement
-    element = @browser.query selector
-    should.exist(element, "could not find '#{selector}'")
+    element  = @browser.query selector
+    if negator
+      should.not.exist(element, "should not have find '#{selector}', but did")
+    else
+      should.exist(element, "could not find '#{selector}'")
+
     next()
 
   @Then /^(.+) should be (visible|hidden)$/, (namedElement, visibility, next) ->
@@ -56,6 +73,9 @@ module.exports = ->
   @When /^I click (.*)$/, (namedElement, next) ->
     @selectorFor namedElement, (selector) =>
       @browser.clickLink selector, next
+
+  @When /^I click "([^"]+)"$/, (link, next) ->
+    @browser.clickLink link, next
 
   @When /^I check off "([^"]+)"$/, (value, next) ->
     Concern.findOne { content: value }, (err, concern) =>

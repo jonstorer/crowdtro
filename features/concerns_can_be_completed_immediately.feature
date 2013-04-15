@@ -4,7 +4,10 @@ Feature: User can complete a concern immediately
 
   @wip
   Scenario: Concerns can be completed immediately
-    Given I am on the site
+    Given I am logged in as:
+      | first_name | last_name | email              |
+      | Steve      | Shin      | steve@crowdtap.com |
+    And I am on the site
     When I enter "Too many concerns" in the textarea within the new concern form
     And I press "Add"
     Then I should see "Too many concerns" within the pending concerns list

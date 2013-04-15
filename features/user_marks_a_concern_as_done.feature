@@ -2,6 +2,11 @@ Feature: User can add a concern
   In order to keep track of concerns during retro
   A user can add concerns to the concerns list
 
+  Background:
+    Given I am logged in as:
+      | first_name | last_name | email              |
+      | Steve      | Shin      | steve@crowdtap.com |
+
   Scenario: User Marks a concern as done
     Given a "Too many concerns" Concern exists
     And I am on the site

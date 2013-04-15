@@ -14,6 +14,7 @@ Browser.debug = true if process.env.DEBUG == 'true'
 class World
   constructor: (callback) ->
     @browser = new Browser()
+
     callback(@)
 
   selectorFor: (locator, callback = (s) -> s) ->
