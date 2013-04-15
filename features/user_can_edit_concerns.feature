@@ -3,7 +3,10 @@ Feature: User can add a concern
   A user can add concerns to the concerns list
 
   Scenario: LongActions loading state displays a spinner
-    Given the following Concern exists:
+    Given I am logged in as:
+      | first_name | last_name | email              |
+      | Steve      | Shin      | steve@crowdtap.com |
+    And the following Concern exists:
       | content |
       | So Many |
     Given I am on the site

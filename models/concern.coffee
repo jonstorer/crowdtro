@@ -1,4 +1,5 @@
-mongoose = require('./db')
+mongoose   = require './db'
+timestamps = require 'mongoose-times'
 
 concernSchema = new mongoose.Schema
   content: String
@@ -6,6 +7,12 @@ concernSchema = new mongoose.Schema
     type: Boolean
     default: false
 
+# pluggins
+concernSchema.plugin timestamps,
+  created:     'created_at',
+  lastUpdated: 'updated_at'
+
+# methods
 concernSchema.methods.toJSON = ->
   id:       @id,
   content:  @content

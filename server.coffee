@@ -1,34 +1,12 @@
-express = require('express')
-http    = require('http')
-path    = require('path')
-app     = express()
+env = process.env.NODE_ENV || 'development'
 
 require './config/monitoring'
 
-app.configure ->
-  app.set 'port', process.env.PORT || 3000
-  app.use express.favicon()
-  app.use express.logger('dev')
-  app.use express.bodyParser()
-  app.use express.methodOverride()
-  app.use express.cookieParser('super-sekret')
-  app.use express.session()
-  app.use app.router
-  app.use express.static path.join(__dirname, 'public')
+app = require('express')()
 
-app.configure 'development', ->
-  app.use express.errorHandler()
+require("./config/environments/#{env}")(app)
+require('./config/routes')(app)
 
-concern = require('./routes/concern')
-spine   = require('./routes/spine')
-
-app.get    '/concerns',     concern.index
-app.post   '/concerns',     concern.create
-app.put    '/concerns/:id', concern.update
-app.delete '/concerns/:id', concern.delete
-
-app.get '/crowdtro.css', spine.css
-app.get '/crowdtro.js',  spine.js
-
+http = require('http')
 http.createServer(app).listen app.get('port'), ->
   console.log('Express server listening on port ' + app.get('port'))

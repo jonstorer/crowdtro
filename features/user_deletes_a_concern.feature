@@ -6,7 +6,10 @@ Feature: User can add a concern
     Given the following Concern exists:
       | content |
       | So Many |
-    Given I am on the site
+    And I am logged in as:
+      | first_name | last_name | email              |
+      | Steve      | Shin      | steve@crowdtap.com |
+    And I am on the site
     When I click the delete link within the "So Many" concerns element
     Then I should not see "So Many" within the pending concerns list
     And I should not see "So Many" within the complete concerns list

@@ -33,10 +33,13 @@ module.exports =
   '^the complete concerns list$':  (n) -> n '.complete'
   '^the new concern form$':        (n) -> n 'form#new-concern'
   '^the textarea$':                (n) -> n 'textarea'
+  '^the page$':                    (n) -> n 'body'
 
   # Paths
 
-  '^the site$': (n) -> n '/'
+  '^the site$':       (n) -> n '/'
+  '^the homepage$':   (n) -> n '/'
+  '^the login path$': (n) -> n '/login'
 
   # Fall through
 

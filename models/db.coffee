@@ -13,6 +13,6 @@ mongoose.connect mongo_uri, (err, res) ->
   if err
     console.log "ERROR connecting to: #{mongo_uri}. #{err}"
   else
-    console.log "Succeeded connected to: #{mongo_uri}"
+    console.log "Mongooose connected to: #{mongo_uri}"
 
 module.exports = mongoose
