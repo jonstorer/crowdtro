@@ -22,10 +22,10 @@ userSchema.statics.findFromAuthHash = (auth_hash, callback) ->
 
 userSchema.statics.createFromAuthHash = (auth_hash, callback) ->
   attributes =
-    google_app_id: auth_hash.google_apps_id
-    first_name:    auth_hash.name.givenName
-    last_name:     auth_hash.name.familyName
-    email:         auth_hash.emails[0].value
+    google_apps_id: auth_hash.google_apps_id
+    first_name:     auth_hash.name.givenName
+    last_name:      auth_hash.name.familyName
+    email:          auth_hash.emails[0].value
   @model('User').create attributes, callback
 
 module.exports = mongoose.model('User', userSchema)

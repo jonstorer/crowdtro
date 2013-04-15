@@ -1,5 +1,5 @@
 authenticate = (req, res, next) ->
-  return next() if req.isAuthenticated() || process.env.NODE_ENV == 'test'
+  return next() if req.isAuthenticated()
   res.redirect('/login')
 
 module.exports =

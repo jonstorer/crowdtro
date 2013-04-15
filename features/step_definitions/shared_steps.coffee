@@ -1,9 +1,17 @@
 should   = require 'should'
 mongoose = require 'mongoose'
 Concern  = mongoose.models.Concern
+User     = mongoose.models.User
 
 module.exports = ->
   @World = require('../support/world').World
+
+  @Then /^I am logged in as:$/, (table, next) ->
+    @visit '/login', =>
+      User.create table.hashes()[0], (err, user) =>
+        @$.post "/login_for_test/#{user.id}", (user, status, xhr) ->
+          throw 'failed' if status != 'success'
+          next()
 
   @Then /^I wait (\d+) seconds?$/, (seconds, next) ->
     setTimeout next, parseInt(seconds) * 1000

@@ -7,7 +7,12 @@ passport     = require('./passport')
 
 module.exports = (app) ->
 
-  app.all /^\/((?!auth|login|img|stylesheets|javascripts).*)/, authenticate
+  routes = 'auth|login|img|stylesheets|javascripts'
+  routes += '|login_for_test' if process.env.NODE_ENV == 'test'
+  routes = new RegExp("^\/((?!#{routes}).*)")
+
+  console.log routes
+  app.all routes, authenticate
 
   app.get '/',        homes.show
   app.get '/login',   homes.login

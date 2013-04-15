@@ -3,7 +3,10 @@ Feature: User can bring a concern back from done
   A user can move a concern from complete to current
 
   Scenario: A concern moved from complete to pending
-    Given the following Concern exists:
+    Given I am logged in as:
+      | first_name | last_name | email              |
+      | Steve      | Shin      | steve@crowdtap.com |
+    And the following Concern exists:
       | content          | complete |
       | Unhealthy snacks | true     |
     And I am on the site
