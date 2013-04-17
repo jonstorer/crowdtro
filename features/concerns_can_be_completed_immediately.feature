@@ -2,7 +2,6 @@ Feature: User can complete a concern immediately
   In order to keep track of concerns during retro
   A user can complete concerns immediately
 
-  @wip
   Scenario: Concerns can be completed immediately
     Given I am logged in as:
       | first_name | last_name | email              |
@@ -15,6 +14,7 @@ Feature: User can complete a concern immediately
     Then I should not see "Too many concerns" within the pending concerns list
     But I should see "Too many concerns" within the complete concerns list
     When I click "Logout"
+    And I open a new browser
     And I log in as:
       | first_name | last_name | email              |
       | Steve      | Shin      | steve@crowdtap.com |

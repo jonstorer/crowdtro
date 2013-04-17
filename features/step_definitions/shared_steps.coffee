@@ -6,6 +6,9 @@ User     = mongoose.models.User
 module.exports = ->
   @World = require('../support/world').World
 
+  @Given /^I open a new browser$/, (next) ->
+    @resetBrowser next
+
   @Then /^I (?:am logged|log) in as:$/, (table, next) ->
     login = (user) =>
       @visit '/login', =>
