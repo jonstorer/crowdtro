@@ -13,6 +13,10 @@ class Navigation extends Spine.Controller
     super
     @html(require('views/concerns/navigation')(@concern))
 
+    unless @concern.isPersisted()
+      @concern.bind 'ajaxSuccess', =>
+        @concern = Concern.findCID @concern.cid
+
   edit: (event) =>
     event.preventDefault()
     @navigate("concerns-#{ @concern.cid }-edit", shim: true)

@@ -18,7 +18,8 @@ class Stack extends Spine.Stack
 
     super
 
-    @concern.bind 'ajaxSuccess', =>
-      @concern = Concern.findCID @concern.cid
+    unless @concern.isPersisted()
+      @concern.bind 'ajaxSuccess', =>
+        @concern = Concern.findCID @concern.cid
 
 module.exports = Stack
