@@ -10,6 +10,8 @@ class Concern extends Spine.Model
 
   isComplete: -> @complete == true
 
+  isPersisted: -> @cid != @id
+
   @complete: ->
     @select (c) -> c.complete == true
 
