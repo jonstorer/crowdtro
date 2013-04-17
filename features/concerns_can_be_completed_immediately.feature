@@ -14,6 +14,10 @@ Feature: User can complete a concern immediately
     When I click the complete link within the "Too many concerns" concerns element
     Then I should not see "Too many concerns" within the pending concerns list
     But I should see "Too many concerns" within the complete concerns list
-    When I reload the page
+    When I click "Logout"
+    And I log in as:
+      | first_name | last_name | email              |
+      | Steve      | Shin      | steve@crowdtap.com |
+    And I am on the site
     Then I should not see "Too many concerns" within the pending concerns list
     But I should see "Too many concerns" within the complete concerns list

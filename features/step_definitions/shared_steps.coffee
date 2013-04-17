@@ -7,11 +7,20 @@ module.exports = ->
   @World = require('../support/world').World
 
   @Then /^I (?:am logged|log) in as:$/, (table, next) ->
-    @visit '/login', =>
-      User.create table.hashes()[0], (err, user) =>
+    login = (user) =>
+      @visit '/login', =>
         @$.post "/login_for_test/#{user.id}", (user, status, xhr) ->
-          throw 'failed' if status != 'success'
+          throw('failed') if status != 'success'
           next()
+
+    User.findOne table.hashes()[0], (err, user) =>
+      console.log err if err
+      if user
+        login(user)
+      else
+        User.create table.hashes()[0], (err, user) =>
+          console.log err if err
+          login(user)
 
   @Then /^I wait (\d+) seconds?$/, (seconds, next) ->
     setTimeout next, parseInt(seconds) * 1000

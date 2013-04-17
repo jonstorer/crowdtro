@@ -14,9 +14,10 @@ class Item extends Spine.Controller
 
     @el.attr('cid', "concern-#{ @concern.cid }")
 
-    @concern.bind 'ajaxSuccess', =>
-      @concern = Concern.findCID @concern.cid
-      @setId()
+    unless @concern.isPersisted()
+      @concern.bind 'ajaxSuccess', =>
+        @concern = Concern.findCID @concern.cid
+        @setId()
 
     @setId()
 
