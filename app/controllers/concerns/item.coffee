@@ -10,7 +10,7 @@ class Item extends Spine.Controller
     @append new Stack(concern: @concern)
     @append new Navigation(concern: @concern)
 
-    @concern.bind 'unbind remove', => @el.remove()
+    @concern.bind 'unbind remove', => @release()
 
     @el.attr('cid', "concern-#{ @concern.cid }")
 
