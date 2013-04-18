@@ -1,10 +1,10 @@
 Concern = require 'models/concern'
 
-class ConcernShow extends Spine.Controller
+class Show extends Spine.Controller
   className: 'row-fluid controller show-concern'
 
   constructor: ->
     super
-    @html require('views/concerns/show')(@stack.concern)
+    @active -> @html require('views/concerns/show')(Concern.findCID @stack.concern.cid)
 
-module.exports = ConcernShow
+module.exports = Show
