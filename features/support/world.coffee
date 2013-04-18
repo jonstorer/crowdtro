@@ -26,10 +26,7 @@ class World
     console.log '#TODO fix me'
     path = @browser.window.location.pathname
     @browser = new Browser()
-    @browser.visit path, (err, browser, status) =>
-      console.log err if err
-      @$ = browser.window.$
-      next err, browser, status
+    @visit path, next
 
   visit: (url, next) ->
     @browser.visit url, (err, browser, status) =>

@@ -8,13 +8,15 @@ class Edit extends Spine.Controller
 
   constructor: ->
     super
-    @html require('views/concerns/edit')(@stack.concern)
+    @active -> @html require('views/concerns/edit')(Concern.findCID @stack.concern.cid)
 
-  save: =>
-    event.preventDefault()
-    @stack.concern.one 'save', =>
-      @navigate("concerns-#{ @stack.concern.cid }-show")
+  save: (e) =>
+    e.preventDefault()
 
-    @stack.concern.fromForm(event.target).save()
+    concern = Concern.findCID @stack.concern.cid
+    concern.one 'save', =>
+      @navigate("concerns-#{ concern.cid }-show", { shim: true })
+
+    concern.fromForm(e.target).save()
 
 module.exports = Edit

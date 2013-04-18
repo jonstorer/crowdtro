@@ -10,18 +10,18 @@ class Item extends Spine.Controller
     @append new Stack(concern: @concern)
     @append new Navigation(concern: @concern)
 
-    @concern.bind 'unbind remove', => @el.remove()
+    @concern.bind 'unbind remove', => @release()
+
+    @setId @concern.id
 
     @el.attr('cid', "concern-#{ @concern.cid }")
 
     unless @concern.isPersisted()
-      @concern.bind 'ajaxSuccess', =>
+      Concern.bind 'ajaxSuccess', (_, concern) =>
         @concern = Concern.findCID @concern.cid
-        @setId()
+        @setId(@concern.id)
+        Concern.unbind 'ajaxSuccess' if @concern.isPersisted()
 
-    @setId()
-
-  setId: =>
-    @el.attr('id', "concern-#{ @concern.id }")
+  setId: (id) => @el.attr('id', "concern-#{ id }")
 
 module.exports = Item
