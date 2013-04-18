@@ -15,7 +15,7 @@ class Edit extends Spine.Controller
 
     concern = Concern.findCID @stack.concern.cid
     concern.one 'save', =>
-      @navigate("concerns-#{ concern.cid }-show")
+      @navigate("concerns-#{ concern.cid }-show", { shim: true })
 
     concern.fromForm(e.target).save()
 
