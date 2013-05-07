@@ -1,7 +1,8 @@
 Spine = require('spine')
 
 class Concern extends Spine.Model
-  @configure 'Concern', 'id', 'content', 'complete'
+  @configure 'Concern', 'id', 'content',
+    'complete', 'score'
 
   @extend Spine.Model.Ajax
 

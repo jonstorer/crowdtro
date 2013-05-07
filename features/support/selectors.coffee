@@ -24,7 +24,7 @@ module.exports =
         throw err
       next("#concern-#{concern.id}")
 
-  '^the (.+) link$': (type, n) -> n ".#{type}"
+  '^the (.+) link$': (type, n) -> n ".#{type.replace(' ', '')}"
 
   # Static Selectors
 

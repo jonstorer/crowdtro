@@ -7,5 +7,6 @@
     <% end %>
     <a class='btn btn-mini edit' href='#'><i class='icon-edit'></i></a>
     <a class='btn btn-mini delete' href='#'><i class='icon-trash'></i></a>
+    <a class='btn btn-mini upvote' href='#'><i class='icon-plus'></i></a>
   </div>
 </div>

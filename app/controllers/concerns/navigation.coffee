@@ -8,6 +8,7 @@ class Navigation extends Spine.Controller
     'click .complete': 'complete'
     'click .pending':  'pending'
     'click .delete':   'destroy'
+    'click .upvote':   'upvote'
 
   constructor: ->
     super
@@ -16,6 +17,11 @@ class Navigation extends Spine.Controller
     unless @concern.isPersisted()
       @concern.bind 'ajaxSuccess', =>
         @concern = Concern.findCID @concern.cid
+
+  upvote: (event) =>
+    event.preventDefault()
+    @concern.score += 1
+    @save()
 
   edit: (event) =>
     event.preventDefault()
