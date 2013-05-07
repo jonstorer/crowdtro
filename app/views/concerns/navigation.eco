@@ -5,8 +5,12 @@
     <% else: %>
       <a class='btn btn-mini complete' href='#'><i class='icon-ok'></i></a>
     <% end %>
+  </div>
+  <div class='btn-group'>
     <a class='btn btn-mini edit' href='#'><i class='icon-edit'></i></a>
     <a class='btn btn-mini delete' href='#'><i class='icon-trash'></i></a>
+  </div>
+  <div class='btn-group'>
     <a class='btn btn-mini upvote' href='#'><i class='icon-plus'></i></a>
     <a class='btn btn-mini downvote' href='#'><i class='icon-minus'></i></a>
   </div>
