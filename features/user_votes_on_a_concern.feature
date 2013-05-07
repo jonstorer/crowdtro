@@ -30,3 +30,12 @@ Feature: User can add a concern
     Then I should see "+4" within the "So Many" concerns element
     When I click the down vote link within the "So Many" concerns element
     Then I should see "+3" within the "So Many" concerns element
+
+  Scenario: User cannot down vote a concern below 0
+    Given the following Concern exists:
+      | content | score |
+      | So Many | 0     |
+    When I am on the site
+    Then I should not see "+0" within the "So Many" concerns element
+    When I click the down vote link within the "So Many" concerns element
+    Then I should not see "-1" within the "So Many" concerns element
