@@ -9,6 +9,7 @@ class Navigation extends Spine.Controller
     'click .pending':  'pending'
     'click .delete':   'destroy'
     'click .upvote':   'upvote'
+    'click .downvote': 'downvote'
 
   constructor: ->
     super
@@ -21,6 +22,11 @@ class Navigation extends Spine.Controller
   upvote: (event) =>
     event.preventDefault()
     @concern.score += 1
+    @save()
+
+  downvote: (event) =>
+    event.preventDefault()
+    @concern.score -= 1
     @save()
 
   edit: (event) =>
