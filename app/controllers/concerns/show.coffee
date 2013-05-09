@@ -5,6 +5,11 @@ class Show extends Spine.Controller
 
   constructor: ->
     super
-    @active -> @html require('views/concerns/show')(Concern.findCID @stack.concern.cid)
+
+    @stack.concern.bind 'save', @render
+    @active @render
+
+  render: =>
+    @html require('views/concerns/show')(Concern.findCID @stack.concern.cid)
 
 module.exports = Show
