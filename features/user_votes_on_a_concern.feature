@@ -8,19 +8,25 @@ Feature: User can add a concern
       | Steve      | Shin      | steve@crowdtap.com |
 
   Scenario: Concerns without votes should not show score
-    Given the following Concern exists:
-      | content | score |
-      | So Many | 0     |
-    When I am on the site
-    Then I should not see "+0" within the "So Many" concerns element
-
-  Scenario: User can up vote a concern
-    Given the following Concern exists:
+    Given the following Concerns exist:
       | content |
       | So Many |
     When I am on the site
+    Then I should not see "+0" within the "So Many" concerns element
+
+  @thisone
+  Scenario: User can up vote a concern
+    Given the following Concern exists:
+      | content | score |
+      | So Many | 0     |
+      | So Few  | 12    |
+    When I am on the site
+    Then I should see "So Many" within the 1st concern within the pending concerns list
+    And I should see "So Few" within the 2nd concern within the pending concerns list
     And I click the up vote link within the "So Many" concerns element
     Then I should see "+1" within the "So Many" concerns element
+    And I should see "So Many" within the 1st concern within the pending concerns list
+    And I should see "So Few" within the 2nd concern within the pending concerns list
 
   Scenario: User can down vote a concern that has a score above 0
     Given the following Concern exists:
