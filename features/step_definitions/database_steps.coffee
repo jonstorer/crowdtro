@@ -12,7 +12,13 @@ module.exports = ->
     attrs = { content: content }
     Concern.create attrs, next
 
-  @Given /^the following Concern exists:$/, (table, next) ->
-    for concern in table.hashes()
+  @Given /^the following Concern(?:s)? exist(?:s)?:$/, (table, next) ->
+    concerns = for concern in table.hashes()
       concern.complete = concern.complete == 'true'
-      Concern.create concern, next
+      concern
+
+    do create = ->
+      if concern = concerns.shift()
+        Concern.create concern, create
+      else
+        next()

@@ -47,7 +47,7 @@ module.exports = ->
 
   @Then /^I should (not )?see (.+)$/, (negator, namedElement, next) ->
     @selectorFor namedElement, (selector) =>
-      element  = @browser.query selector
+      element = @browser.query selector
       if negator
         should.not.exist(element, "should not have find '#{selector}', but did")
       else

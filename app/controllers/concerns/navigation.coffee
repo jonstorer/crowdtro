@@ -22,13 +22,13 @@ class Navigation extends Spine.Controller
   upvote: (event) =>
     event.preventDefault()
     @concern.score += 1
-    @save()
+    @concern.save()
 
   downvote: (event) =>
     event.preventDefault()
     if @concern.score > 0
       @concern.score -= 1
-      @save()
+      @concern.save()
 
   edit: (event) =>
     event.preventDefault()
