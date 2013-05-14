@@ -9,8 +9,8 @@ Feature: User can add a concern
 
   Scenario: Concerns without votes should not show score
     Given the following Concerns exist:
-      | content |
-      | So Many |
+      | content | score |
+      | So Many | 0     |
     When I am on the site
     Then I should not see "+0" within the "So Many" concerns element
 
