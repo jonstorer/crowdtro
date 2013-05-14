@@ -24,13 +24,14 @@ module.exports =
         throw err
       next("#concern-#{concern.id}")
 
-  '^the (.+) link$': (type, n) -> n ".#{type.replace(' ', '')}"
+  '^the ([0-9]*)(?:rd|nd|th|st)? concern': (index, next) ->
+    next ".concern-item:nth-child(#{index})"
+
+  '^the (.+) link$':          (type, n) -> n ".#{type.replace(' ', '')}"
+  '^the (.+) concerns list$': (type, n) -> n ".#{type.toLowerCase()}"
 
   # Static Selectors
 
-  '^the pending concerns list$':   (n) -> n '.pending'
-  '^the edit link$':               (n) -> n '.edit'
-  '^the complete concerns list$':  (n) -> n '.complete'
   '^the new concern form$':        (n) -> n 'form#new-concern'
   '^the textarea$':                (n) -> n 'textarea'
   '^the page$':                    (n) -> n 'body'
