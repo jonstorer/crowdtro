@@ -83,6 +83,13 @@ module.exports = ->
     buttonSelector = "input[value='#{button}']"
     @browser.pressButton buttonSelector, next
 
+  @When /^I key press "(.*)" in (.+)$/, (eventName, namedElement, next) ->
+    @selectorFor namedElement, (selector) =>
+      event = @$.Event('keyup')
+      event.which = @keyIdFor(eventName)
+      @$(selector).trigger(event)
+      next()
+
   @When /^I press "(.*)" within (.+)$/, (button, namedElement, next) ->
     @selectorFor namedElement, (selector) =>
       buttonSelector = "#{selector} input[value='#{button}']"

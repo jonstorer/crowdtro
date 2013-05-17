@@ -23,7 +23,13 @@ Feature: User can manage concerns
     When I click the edit link within the "So Many" concerns element
     Then the "So Many" concerns show element should be hidden
     And the "So Many" concerns edit element should be visible
-    When I enter "Not enough conerns" in the textarea within the "So Many" concerns element
+    When I enter "Too Many" in the textarea within the "So Many" concerns element
+    And I click the cancel link within the "So Many" concerns element
+    Then the "So Many" concerns edit element should be hidden
+    And the "So Many" concerns show element should be visible
+    And I should see "So Many" within the textarea within the "So Many" concerns element
+    When I click the edit link within the "So Many" concerns element
+    And I enter "Not enough conerns" in the textarea within the "So Many" concerns element
     And I press "Save" within the "So Many" concerns element
     Then I should see "Not enough conerns" within the pending concerns list
     When I click the edit link within the "Not enough conerns" concerns element

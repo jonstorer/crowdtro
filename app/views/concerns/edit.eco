@@ -3,4 +3,5 @@
     <textarea rows='3' name='content' class='input-xxlarge'><%= @content %></textarea>
   </fieldset>
   <input type='submit' class='btn' value='Save'>
+  <a class='cancel' href='#'>cancel</a>
 </form>

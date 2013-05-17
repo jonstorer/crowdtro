@@ -7,7 +7,8 @@ class New extends Spine.Controller
     'form': 'form'
 
   events:
-    'submit form': 'save'
+    'submit form':    'save'
+    'keyup textarea': 'checkKeyUp'
 
   constructor: ->
     super
@@ -21,5 +22,8 @@ class New extends Spine.Controller
       @form[0].reset()
 
     concern.save()
+
+  checkKeyUp: (event) =>
+    @save(event) if event.which is 13
 
 module.exports = New
