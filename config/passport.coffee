@@ -20,6 +20,10 @@ passport.use new GoogleStrategy params, (identifier, profile, callback) ->
     auth_hash = profile
     auth_hash.identifier = identifier
     User.findOrCreateFromAuthHash auth_hash, callback
+  else if (new RegExp('@reenhanced.com$')).test(profile.emails[0].value)
+    auth_hash = profile
+    auth_hash.identifier = identifier
+    User.findOrCreateFromAuthHash auth_hash, callback
   else
     callback(null, false, { message: 'Please use your crowdtap.com google apps account.' })
 
