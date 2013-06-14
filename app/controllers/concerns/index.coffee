@@ -4,7 +4,7 @@ List = require 'controllers/concerns/list'
 New  = require 'controllers/concerns/new'
 
 class ConcernsController extends Spine.Controller
-  className: 'container-fluid'
+  className: 'container-fluid concerns'
 
   constructor: ->
     super
