@@ -6,7 +6,7 @@ switch(env)
   when 'development'
     mongo_uri = "mongodb://localhost:#{mongo_port}/crowdtro_development"
   when 'test'
-    mongo_uri = "mongodb://localhost/crowdtro_test_#{process.env.PORT}"
+    mongo_uri = "mongodb://localhost:#{mongo_port}/crowdtro_test_#{process.env.PORT}"
   when 'production'
     mongo_uri = process.env.MONGOLAB_URI
 
