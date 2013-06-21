@@ -1,11 +1,12 @@
-mongoose = require('mongoose')
-env      = process.env.NODE_ENV or 'development'
+mongoose   = require('mongoose')
+env        = process.env.NODE_ENV or 'development'
+mongo_port = process.env.BOXEN_MONGODB_PORT or 27017
 
 switch(env)
   when 'development'
-    mongo_uri = 'mongodb://localhost/crowdtro_development'
+    mongo_uri = "mongodb://localhost:#{mongo_port}/crowdtro_development"
   when 'test'
-    mongo_uri = "mongodb://localhost/crowdtro_test_#{process.env.PORT}"
+    mongo_uri = "mongodb://localhost:#{mongo_port}/crowdtro_test_#{process.env.PORT}"
   when 'production'
     mongo_uri = process.env.MONGOLAB_URI
 
