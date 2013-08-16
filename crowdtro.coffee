@@ -3,15 +3,15 @@ app = angular.module('crowdtro', ['ngResource'])
 app.controller 'HeaderCtrl', ($scope, Me) ->
   $scope.me = Me.get()
 
-app.directive 'focusMe', ($timeout) ->
-  #scope: true
-  link: (scope, element, attrs) ->
-    scope.$watch attrs.focusMe, () ->
-      $timeout ->
-        element[0].focus()
-        temp = element[0].value
-        element[0].value = ''
-        element[0].value = temp 
+app.directive 'focusOnEdit', ($timeout) ->
+  (scope, element, attrs) ->
+    scope.$watch attrs.focusOnEdit, (value) ->
+      if value
+        $timeout ->
+          element[0].focus()
+          temp = element[0].value
+          element[0].value = ''
+          element[0].value = temp
 
 app.directive 'ngBlur', ->
   (scope, elem, attrs) ->
