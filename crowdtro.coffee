@@ -6,12 +6,13 @@ app.controller 'HeaderCtrl', ($scope, Me) ->
 app.directive 'focusMe', ($timeout) ->
   #scope: true
   link: (scope, element, attrs) ->
-    scope.$watch attrs.focusMe, () ->
-      $timeout ->
-        element[0].focus()
-        temp = element[0].value
-        element[0].value = ''
-        element[0].value = temp 
+    scope.$watch attrs.focusMe, (value) ->
+      if value
+        $timeout ->
+          element[0].focus()
+          temp = element[0].value
+          element[0].value = ''
+          element[0].value = temp
 
 app.directive 'ngBlur', ->
   (scope, elem, attrs) ->

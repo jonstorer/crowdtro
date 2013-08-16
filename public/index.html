@@ -24,7 +24,7 @@
               focus-me="focusInput"
               ng-model='concern.content'
               ng-keydown='updateConcern($event, $index, concern, current)'
-              ng-blur='editingBlurred(concern, current)'
+              ng-blur='editingBlurred(concern, current); focusInput=false'
               >
             </textarea>
           </form>
