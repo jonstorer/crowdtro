@@ -35,7 +35,6 @@ class World
       next err, browser, status
 
   keyIdFor: (type) ->
-    console.log type
     switch type
       when 'enter' then 13
       else 0

@@ -38,8 +38,8 @@ module.exports =
 
   # Paths
 
-  '^the site$':       (n) -> n '/'
-  '^the homepage$':   (n) -> n '/'
+  '^the site$':       (n) -> n '/old.html'
+  '^the homepage$':   (n) -> n '/old.html'
   '^the login path$': (n) -> n '/login'
 
   # Fall through

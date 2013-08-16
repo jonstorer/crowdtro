@@ -4,6 +4,11 @@ exports.index = (req, res) ->
   Concern.find (err, concerns) ->
     res.json concerns
 
+exports.show = (req, res) ->
+  Concern.findById req.route.params.id, (err, concern) ->
+    throw err if err
+    res.json concern
+
 exports.create = (req, res) ->
   concernAttributes = req.body
   delete concernAttributes.id

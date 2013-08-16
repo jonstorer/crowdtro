@@ -7,8 +7,8 @@ passport.deserializeUser (id, done)   -> User.findById id, done
 
 options =
   default:
-    returnURL: 'http://localhost:3000/auth/google_apps/callback',
-    realm:     'http://localhost:3000/'
+    returnURL: 'http://crowdtro.local/auth/google_apps/callback',
+    realm:     'http://crowdtro.local/'
   production:
     returnURL: 'http://crowdtro.herokuapp.com/auth/google_apps/callback',
     realm:     'http://crowdtro.herokuapp.com/'
