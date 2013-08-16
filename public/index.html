@@ -21,16 +21,16 @@
         <div class='row-fluid' ng-show='current.editing'>
           <form>
             <textarea name='content' class='input-xxlarge'
-              focus-me="focusInput"
+              focus-on-edit='current.editing'
               ng-model='concern.content'
               ng-keydown='updateConcern($event, $index, concern, current)'
-              ng-blur='editingBlurred(concern, current); focusInput=false'
+              ng-blur='editingBlurred(concern, current)'
               >
             </textarea>
           </form>
         </div>
 
-        <div class='row-fluid' ng-dblclick='editConcern(concern, current); focusInput=true' ng-hide='current.editing'>
+        <div class='row-fluid' ng-dblclick='editConcern(concern, current)' ng-hide='current.editing'>
           {{concern.score}} / {{concern.content}}
         </div>
 

@@ -3,10 +3,9 @@ app = angular.module('crowdtro', ['ngResource'])
 app.controller 'HeaderCtrl', ($scope, Me) ->
   $scope.me = Me.get()
 
-app.directive 'focusMe', ($timeout) ->
-  #scope: true
-  link: (scope, element, attrs) ->
-    scope.$watch attrs.focusMe, (value) ->
+app.directive 'focusOnEdit', ($timeout) ->
+  (scope, element, attrs) ->
+    scope.$watch attrs.focusOnEdit, (value) ->
       if value
         $timeout ->
           element[0].focus()
