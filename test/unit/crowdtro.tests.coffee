@@ -130,6 +130,71 @@ describe 'CrowdtroCtrl', () ->
       expect(scope.concerns[numConcerns-1].content).toEqual('This is an incomplete concern')
       expect(scope.concerns.length).toEqual(numConcerns)
 
+  describe "toggleConcern", () ->
+    concern = null
+
+    beforeEach () ->
+      concern =
+        id:       4
+        content:  'This is an incomplete concern'
+        complete: false
+        score:    10
+        $update:  jasmine.createSpy()
+
+    it "prevents default and sets editing to false", () ->
+      scope.toggleConcern(concern)
+      expect(concern.complete).toBe(true)
+      expect(concern.$update).toHaveBeenCalled()
+
+  describe "trashConcern", () ->
+    concern = null
+
+    beforeEach () ->
+      concern =
+        id:       4
+        content:  'This is an incomplete concern'
+        complete: false
+        score:    10
+        $remove:  jasmine.createSpy()
+      scope.concerns[0] = concern
+
+    it "removes the concern", () ->
+      scope.trashConcern(0)
+      expect(scope.concerns.length).toBe(0)
+      expect(concern.$remove).toHaveBeenCalled()
+
+  describe "upVote", () ->
+    concern = null
+
+    beforeEach () ->
+      concern =
+        id:       4
+        content:  'This is an incomplete concern'
+        complete: false
+        score:    10
+        $update:  jasmine.createSpy()
+
+    it "prevents default and sets editing to false", () ->
+      scope.upVote(concern)
+      expect(concern.score).toBe(11)
+      expect(concern.$update).toHaveBeenCalled()
+
+  describe "downVote", () ->
+    concern = null
+
+    beforeEach () ->
+      concern =
+        id:       4
+        content:  'This is an incomplete concern'
+        complete: false
+        score:    10
+        $update:  jasmine.createSpy()
+
+    it "prevents default and sets editing to false", () ->
+      scope.downVote(concern)
+      expect(concern.score).toBe(9)
+      expect(concern.$update).toHaveBeenCalled()
+
   describe "updateConcern", () ->
     concern = null
     event = null
