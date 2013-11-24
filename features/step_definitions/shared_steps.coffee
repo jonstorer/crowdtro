@@ -35,7 +35,7 @@ module.exports = ->
       next()
 
   @Given /^I reload the page$/, (next) ->
-    @visit @browser.window.location.pathname, next
+    @browser.reload next
 
   @Then /^show me the contents of (.+)$/, (namedElement, next) ->
     @selectorFor namedElement, (selector) =>
