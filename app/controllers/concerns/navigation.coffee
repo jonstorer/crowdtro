@@ -36,8 +36,6 @@ class Navigation extends Spine.Controller
 
   destroy: (event) =>
     event.preventDefault()
-    Concern.bind 'ajaxError',  => console.log arguments
-    @concern.bind 'ajaxError', => console.log arguments
     @concern.destroy()
 
   complete: (event) =>

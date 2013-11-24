@@ -14,5 +14,5 @@ Feature: User can add a concern
     Then I should not see "So Many" within the pending concerns list
     And I should not see "So Many" within the complete concerns list
     When I reload the page
-    #Then I should not see "So Many" within the pending concerns list
-    #And I should not see "So Many" within the complete concerns list
+    Then I should not see "So Many" within the pending concerns list
+    And I should not see "So Many" within the complete concerns list
