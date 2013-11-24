@@ -23,7 +23,7 @@
     "jasmine-node": "1.0.26",
     "nock": "0.17.3",
     "should": "1.2.2",
-    "zombie": "1.4.1"
+    "zombie": "2.0.0-alpha24"
   },
   "engines" : {
     "node" : "0.10.15"

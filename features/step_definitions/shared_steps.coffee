@@ -11,10 +11,7 @@ module.exports = ->
 
   @Then /^I (?:am logged|log) in as:$/, (table, next) ->
     login = (user) =>
-      @visit '/login', =>
-        @$.post "/login_for_test/#{user.id}", (user, status, xhr) ->
-          throw('failed') if status != 'success'
-          next()
+      @visit "/login_for_test/#{user.id}", next
 
     User.findOne table.hashes()[0], (err, user) =>
       console.log err if err
@@ -38,7 +35,7 @@ module.exports = ->
       next()
 
   @Given /^I reload the page$/, (next) ->
-    @browser.reload next
+    @visit @browser.window.location.pathname, next
 
   @Then /^show me the contents of (.+)$/, (namedElement, next) ->
     @selectorFor namedElement, (selector) =>
@@ -77,7 +74,8 @@ module.exports = ->
   @When /^I enter "([^"]+)" in (.+)$/, (text, namedElement, next) ->
     @selectorFor namedElement, (selector) =>
       element = @browser.query selector
-      @browser.fill(element, text, next)
+      @browser.fill(element, text)
+      @browser.wait next
 
   @When /^I press "(.*)"$/, (button, next) ->
     buttonSelector = "input[value='#{button}']"
