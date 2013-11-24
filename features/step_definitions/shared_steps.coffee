@@ -52,6 +52,13 @@ module.exports = ->
 
       next()
 
+  @Then /^there should be (\d+) (.+)$/, (count, namedElement, next) ->
+    count = parseInt count
+    @selectorFor namedElement, (selector) =>
+      elements = @browser.queryAll selector
+      elements.length.should.equal(count, "should only have found #{count} '#{selector}', but found #{elements.length}")
+      next()
+
   @Then /^(.+) should be (visible|hidden)$/, (namedElement, visibility, next) ->
     @selectorFor namedElement, (selector) =>
       element = @browser.query selector

@@ -1,7 +1,14 @@
 Concern = require '../models/concern'
 
 exports.index = (req, res) ->
-  Concern.find (err, concerns) ->
+  query = req.query || {}
+  for attribute, value of query
+    try
+      query[attribute] = JSON.parse(value)
+    catch err
+      #nothing
+
+  Concern.find query, (err, concerns) ->
     res.json concerns
 
 exports.show = (req, res) ->

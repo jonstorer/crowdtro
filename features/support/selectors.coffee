@@ -16,7 +16,7 @@ module.exports =
         throw err
       next("#concern-#{concern.id} .#{type}-concern")
 
-  '^the "([^"]+)" concerns element$': (value, next) =>
+  '^(?:the )?"([^"]+)" concerns element$': (value, next) =>
     Concern = require('mongoose').models.Concern
     Concern.findOne { content: value }, (err, concern) ->
       if err
