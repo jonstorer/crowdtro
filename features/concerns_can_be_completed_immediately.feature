@@ -19,5 +19,6 @@ Feature: User can complete a concern immediately
       | first_name | last_name | email              |
       | Steve      | Shin      | steve@crowdtap.com |
     And I am on the site
+    And I click the load link
     Then I should not see "Too many concerns" within the pending concerns list
     But I should see "Too many concerns" within the complete concerns list
