@@ -7,7 +7,7 @@ module.exports = (app) ->
   application app
   app.configure 'test', ->
     app.use express.errorHandler()
-    app.post '/login_for_test/:id', (req, res) ->
+    app.get '/login_for_test/:id', (req, res) ->
       id = req.route.params.id
       User.findById id, (err, user) ->
         console.log err if err

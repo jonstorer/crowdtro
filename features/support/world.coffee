@@ -1,4 +1,3 @@
-Browser   = require 'zombie'
 should    = require 'should'
 selectors = require './selectors'
 
@@ -7,14 +6,13 @@ process.env.NODE_ENV ||= 'test'
 
 server = require '../../server'
 
-# Zombie options
-Browser.site = "http://localhost:#{process.env.PORT}/"
-Browser.debug = true if process.env.DEBUG == 'true'
+Browser = require('zombie')
+Browser.site = "http://localhost:#{process.env.PORT}"
+Browser.debug = true
 
 class World
   constructor: (callback) ->
-    @browser = new Browser()
-
+    @browser = new Browser
     callback(@)
 
   selectorFor: (locator, callback = (s) -> s) ->
@@ -25,14 +23,16 @@ class World
   resetBrowser : (next) ->
     console.log '#TODO fix me'
     path = @browser.window.location.pathname
-    @browser = new Browser()
+    @browser = new Browser
     @visit path, next
 
   visit: (url, next) ->
-    @browser.visit url, (err, browser, status) =>
-      console.log err if err
-      @$ = browser.window.$
-      next err, browser, status
+    @browser.visit "#{Browser.site}#{url}", (err) =>
+      if 0 in @browser.errors
+        console.log @browser.errors
+      throw err if err
+      @$ = @browser.window.$
+      next()
 
   keyIdFor: (type) ->
     switch type
