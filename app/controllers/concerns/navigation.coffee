@@ -49,7 +49,7 @@ class Navigation extends Spine.Controller
     @save()
 
   save: =>
-    @concern.one 'save', =>
+    @concern.bind 'save', =>
       @concern.trigger 'remove'
       Concern.trigger("concern:#{ @concern.state() }", @concern)
 

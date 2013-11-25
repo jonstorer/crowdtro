@@ -1,7 +1,8 @@
 should    = require 'should'
 selectors = require './selectors'
 
-process.env.PORT     ||= 4404
+process.env.PORT     ||= (4400 + (parseInt(process.env.SEQ) || 4))
+console.log process.env.PORT
 process.env.NODE_ENV ||= 'test'
 
 server = require '../../server'
