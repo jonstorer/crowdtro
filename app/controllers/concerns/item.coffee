@@ -19,7 +19,7 @@ class Item extends Spine.Controller
     unless @concern.isPersisted()
       Concern.bind 'ajaxSuccess', (_, concern) =>
         @concern = Concern.findCID @concern.cid
-        @setId(@concern.id)
+        @setId @concern.id
         Concern.unbind 'ajaxSuccess' if @concern.isPersisted()
 
   setId: (id) => @el.attr('id', "concern-#{ id }")

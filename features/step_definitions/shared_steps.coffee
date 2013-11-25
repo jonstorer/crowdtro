@@ -49,8 +49,7 @@ module.exports = ->
         should.not.exist(element, "should not have find '#{selector}', but did")
       else
         should.exist(element, "could not find '#{selector}'")
-
-      next()
+      @browser.wait next
 
   @Then /^there should be (\d+) (.+)$/, (count, namedElement, next) ->
     count = parseInt count

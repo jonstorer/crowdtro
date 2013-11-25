@@ -23,4 +23,4 @@ Feature: User can add a concern
     When I click the load link
     And I click the pending link within the "So Many" concerns element
     Then I should see "So Many" within the pending concerns list
-    But I should not see "So Many" within the complete concerns list
+    #But I should not see "So Many" within the complete concerns list
