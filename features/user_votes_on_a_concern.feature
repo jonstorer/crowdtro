@@ -14,7 +14,6 @@ Feature: User can add a concern
     When I am on the site
     Then I should not see "+0" within the "So Many" concerns element
 
-    @tag
   Scenario: User can up vote a concern
     Given the following Concerns exist:
       | content | score |
