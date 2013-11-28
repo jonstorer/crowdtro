@@ -4,7 +4,7 @@ Show = require 'controllers/concerns/show'
 Edit = require 'controllers/concerns/edit'
 
 class Stack extends Spine.Stack
-  className: 'row-fluid stack'
+  className: 'row stack'
 
   controllers:
     show: Show

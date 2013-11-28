@@ -3,7 +3,7 @@ Concern = require 'models/concern'
 Item = require 'controllers/concerns/item'
 
 class List extends Spine.Controller
-  className: 'row-fluid'
+  className: 'row'
 
   constructor: ->
     super

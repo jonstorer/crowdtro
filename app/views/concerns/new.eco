@@ -3,5 +3,5 @@
     <legend>New Concern</legend>
     <textarea rows='3' name='content' class='input-xxlarge'></textarea>
   </fieldset>
-  <input type='submit' class='btn' value='Add'>
+  <input type='submit' class='btn btn-success' value='Add'>
 </form>

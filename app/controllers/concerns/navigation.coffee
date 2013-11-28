@@ -1,7 +1,7 @@
 Concern = require 'models/concern'
 
 class Navigation extends Spine.Controller
-  className: 'row-fluid controller'
+  className: 'row controller'
 
   events:
     'click .edit':     'edit'

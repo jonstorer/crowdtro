@@ -1,18 +1,8 @@
-<div class='navbar-inner'>
-  <div class='container-fluid'>
-    <button type='button' class='btn btn-navbar' data-toggle='collapse' data-target='.nav-collapse'>
-      <span class='icon-bar'></span>
-      <span class='icon-bar'></span>
-      <span class='icon-bar'></span>
-    </button>
-    <a class='brand' href='#'>Crowdtro</a>
-    <div class='nav-collapse collapse'>
-      <p class='navbar-text pull-right'>
-        <%= @first_name %> | <a href='/logout' class='navbar-link'>Logout</a>
-      </p>
-      <ul class='nav'>
-        <li class='active'><a href='#'>Retro</a></li>
-      </ul>
-    </div><!--/.nav-collapse -->
+<div class='container'>
+  <div class='navbar-header'>
+    <a class='navbar-brand' href='#'>Crowdtro</a>
+  </div>
+  <div class='nav navbar-nav navbar-right'>
+    <%= @first_name %> | <a href='/logout' class=''>Logout</a>
   </div>
 </div>

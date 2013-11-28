@@ -2,6 +2,6 @@
   <fieldset>
     <textarea rows='3' name='content' class='input-xxlarge'><%= @content %></textarea>
   </fieldset>
-  <input type='submit' class='btn' value='Save'>
+  <input type='submit' class='btn btn-success' value='Save'>
   <a class='cancel' href='#'>cancel</a>
 </form>

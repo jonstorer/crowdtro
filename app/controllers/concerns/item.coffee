@@ -3,7 +3,7 @@ Navigation = require 'controllers/concerns/navigation'
 Stack      = require 'controllers/concerns/stack'
 
 class Item extends Spine.Controller
-  className: 'row-fluid controller concern-item'
+  className: 'row controller concern-item'
 
   constructor: ->
     super
