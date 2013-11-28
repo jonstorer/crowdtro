@@ -8,9 +8,7 @@ class List extends Spine.Controller
   constructor: ->
     super
     @el.addClass @type
-    Concern.bind "concern:#{@type}", @renderOne
-
-  renderOne: (concern) =>
-    @append new Item(concern: concern)
+    Concern.bind "concern:#{@type}", (concern) =>
+      @append new Item(concern: concern)
 
 module.exports = List
