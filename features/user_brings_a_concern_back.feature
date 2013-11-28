@@ -10,8 +10,7 @@ Feature: User can bring a concern back from done
       | content          | complete |
       | Unhealthy snacks | true     |
     When I am on the site
-    And I click the load link
     Then I should see "Unhealthy snacks" within the complete concerns list
     When I click the pending link within the "Unhealthy snacks" concerns element
     Then I should see "Unhealthy snacks" within the pending concerns list
-    #But I should not see "Unhealthy snacks" within the complete concerns list
+    But I should not see "Unhealthy snacks" within the complete concerns list
