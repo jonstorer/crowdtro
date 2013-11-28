@@ -14,12 +14,8 @@ module.exports = ->
 
   @Given /^the following Concern(?:s)? exist(?:s)?:$/, (table, next) ->
     concerns = for concern in table.hashes()
-      for field, value of concern
-        try
-          concern[field] = JSON.parse(value)
-        catch err
-          # nothing
-        concern
+      concern.complete = concern.complete == 'true'
+      concern
 
     do create = ->
       if concern = concerns.shift()
