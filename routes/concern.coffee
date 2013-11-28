@@ -1,7 +1,8 @@
 Concern = require '../models/concern'
 
 exports.index = (req, res) ->
-  Concern.find (err, concerns) ->
+  query = JSON.parse(JSON.stringify(req.query || {}))
+  Concern.find query, (err, concerns) ->
     res.json concerns
 
 exports.show = (req, res) ->

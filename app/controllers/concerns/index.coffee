@@ -13,6 +13,13 @@ class ConcernsController extends Spine.Controller
     @append new New
     @append new List type: 'complete'
 
-    Concern.fetch()
+    Concern.bind 'refresh', (concerns) =>
+      for concern in concerns
+        Concern.trigger "concern:#{concern.state()}", concern
+
+    Concern.one 'refresh', ->
+      Concern.fetch(data: 'complete=true')
+
+    Concern.fetch(data: 'complete=false')
 
 module.exports = ConcernsController

@@ -9,7 +9,7 @@ Feature: User can bring a concern back from done
     And the following Concern exists:
       | content          | complete |
       | Unhealthy snacks | true     |
-    And I am on the site
+    When I am on the site
     Then I should see "Unhealthy snacks" within the complete concerns list
     When I click the pending link within the "Unhealthy snacks" concerns element
     Then I should not see "Unhealthy snacks" within the complete concerns list
