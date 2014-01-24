@@ -15,7 +15,7 @@
     "nodetime": "0.8.12",
     "passport": "0.1.17",
     "passport-google": "0.3.0",
-    "readable-stream": "1.0.15",
+    "raygun": "latest",
     "spine": "1.0.9"
   },
   "devDependencies" : {
@@ -26,7 +26,7 @@
     "zombie": "2.0.0-alpha24"
   },
   "engines" : {
-    "node" : "0.10.15"
+    "node" : "0.10.24"
   },
   "engineStrict": true,
   "scripts" : {

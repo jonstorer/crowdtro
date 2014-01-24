@@ -3,7 +3,7 @@ express  = require 'express'
 flash    = require 'connect-flash'
 path     = require('path')
 
-module.exports = (app) ->
+module.exports = (app, next) ->
   app.configure ->
     app.set 'views', path.join(__dirname, '..', 'views')
     app.set 'view engine', 'ejs'
@@ -18,3 +18,4 @@ module.exports = (app) ->
     app.use passport.session()
     app.use app.router
     app.use express.static path.join(__dirname, '..', 'public')
+    next(app)
