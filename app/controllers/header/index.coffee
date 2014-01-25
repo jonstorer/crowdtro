@@ -1,4 +1,5 @@
-Me = require 'models/me'
+Me      = require 'models/me'
+Company = require 'models/company'
 
 class HeaderController extends Spine.Controller
   className: 'navbar navbar-inverse navbar-fixed-top'
@@ -7,8 +8,11 @@ class HeaderController extends Spine.Controller
     super
 
     Me.one 'refresh', =>
-      @html require('views/header')(Me.last())
+      Company.one 'refresh', =>
 
+        @html require('views/header')(me: Me.last(), company: Company.last())
+
+      Company.fetch()
     Me.fetch()
 
 module.exports = HeaderController

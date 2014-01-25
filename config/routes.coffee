@@ -1,5 +1,6 @@
 homes        = require('../routes/homes')
 concern      = require('../routes/concern')
+company      = require('../routes/v2/company')
 me           = require('../routes/me')
 spine        = require('../routes/spine')
 angular      = require('../routes/angular')
@@ -17,9 +18,10 @@ module.exports = (app) ->
   app.get '/',        homes.show
   app.get '/login',   homes.login
   app.get '/logout',  homes.logout
+  app.get '/old',     homes.old
 
   strategy = passport.authenticate 'google',
-    successRedirect: '/old.html'
+    successRedirect: '/old'
     failureRedirect: '/login'
     failureFlash:    true
 
@@ -27,6 +29,8 @@ module.exports = (app) ->
   app.get '/auth/google_apps/callback', strategy
 
   app.get '/me', me.show
+
+  app.get '/company', company.show
 
   app.get    '/concerns',     concern.index
   app.get    '/concerns/:id', concern.show

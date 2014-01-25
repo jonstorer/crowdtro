@@ -1,5 +1,8 @@
-should    = require 'should'
-selectors = require './selectors'
+should      = require 'should'
+selectors   = require './selectors'
+Rosie       = require 'rosie'
+
+require '../../spec/factories'
 
 process.env.PORT     ||= 4404
 process.env.NODE_ENV ||= 'test'
@@ -38,5 +41,13 @@ class World
     switch type
       when 'enter' then 13
       else 0
+
+  Factory: (factoryName, attrs = {}) ->
+    for key, value in attrs
+      try
+        attrs[key] = JSON.parse(value)
+      catch error
+        # nothing
+    Rosie.Factory.attributes(factoryName, attrs)
 
 module.exports.World = World

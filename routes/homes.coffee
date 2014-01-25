@@ -10,3 +10,6 @@ module.exports =
   logout: (req, res) ->
     req.logout()
     res.redirect('/login')
+
+  old: (req, res) ->
+    res.render 'old', { companyId: req.session.company.id }
