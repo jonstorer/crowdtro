@@ -3,7 +3,6 @@ concern      = require('../routes/concern')
 company      = require('../routes/company')
 me           = require('../routes/me')
 spine        = require('../routes/spine')
-angular      = require('../routes/angular')
 authenticate = require('../routes/middleware').authenticate
 passport     = require('./passport')
 
@@ -20,7 +19,7 @@ module.exports = (app) ->
   app.get '/logout',  homes.logout
 
   strategy = passport.authenticate 'google',
-    successRedirect: '/old.html'
+    successRedirect: '/'
     failureRedirect: '/login'
     failureFlash:    true
 
@@ -39,5 +38,3 @@ module.exports = (app) ->
 
   app.get '/crowdtro.css', spine.css
   app.get '/crowdtro.js',  spine.js
-
-  app.get '/v2/crowdtro.js',  angular.js

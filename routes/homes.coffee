@@ -10,4 +10,5 @@ module.exports =
   logout: (req, res) ->
     req.logout()
     delete req.session.company
+    delete req.session.passport
     res.redirect('/login')
