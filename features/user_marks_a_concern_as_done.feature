@@ -8,7 +8,9 @@ Feature: User can add a concern
       | Steve      | Shin      | steve@crowdtap.com |
 
   Scenario: User Marks a concern as done
-    Given a "Too many concerns" Concern exists
+    Given the following Concern exists:
+      | content           | company                      |
+      | Too many concerns | { "domain": "crowdtap.com" } |
     And I am on the site
     Then I should see "Too many concerns" within the pending concerns list
     When I click the complete link within the "Too many concerns" concerns element
@@ -17,8 +19,8 @@ Feature: User can add a concern
 
   Scenario: User marks a concern as pending
     Given the following Concern exists:
-      | content | complete |
-      | So Many | true     |
+      | content | complete | company                      |
+      | So Many | true     | { "domain": "crowdtap.com" } |
     And I am on the site
     When I click the pending link within the "So Many" concerns element
     Then I should see "So Many" within the pending concerns list

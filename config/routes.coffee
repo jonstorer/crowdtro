@@ -1,6 +1,6 @@
 homes        = require('../routes/homes')
 concern      = require('../routes/concern')
-company      = require('../routes/v2/company')
+company      = require('../routes/company')
 me           = require('../routes/me')
 spine        = require('../routes/spine')
 angular      = require('../routes/angular')

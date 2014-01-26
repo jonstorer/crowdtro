@@ -9,16 +9,16 @@ Feature: User can add a concern
 
   Scenario: Concerns without votes should not show score
     Given the following Concern exists:
-      | content | score |
-      | So Many | 0     |
+      | content | score | company                      |
+      | So Many | 0     | { "domain": "crowdtap.com" } |
     When I am on the site
     Then I should not see "+0" within the "So Many" concerns element
 
   Scenario: User can up vote a concern
     Given the following Concerns exist:
-      | content | score |
-      | So Many | 0     |
-      | So Few  | 12    |
+      | content | score | company                      |
+      | So Many | 0     | { "domain": "crowdtap.com" } |
+      | So Few  | 12    | { "domain": "crowdtap.com" } |
     When I am on the site
     Then I should see "So Many" within the pending concerns list
     And I should see "So Few" within the pending concerns list
@@ -29,8 +29,8 @@ Feature: User can add a concern
 
   Scenario: User can down vote a concern that has a score above 0
     Given the following Concern exists:
-      | content | score |
-      | So Many | 4     |
+      | content | score | company                      |
+      | So Many | 4     | { "domain": "crowdtap.com" } |
     When I am on the site
     Then I should see "+4" within the "So Many" concerns element
     When I click the down vote link within the "So Many" concerns element
@@ -38,8 +38,8 @@ Feature: User can add a concern
 
   Scenario: User cannot down vote a concern below 0
     Given the following Concern exists:
-      | content | score |
-      | So Many | 0     |
+      | content | score | company                      |
+      | So Many | 0     | { "domain": "crowdtap.com" } |
     When I am on the site
     Then I should not see "+0" within the "So Many" concerns element
     When I click the down vote link within the "So Many" concerns element

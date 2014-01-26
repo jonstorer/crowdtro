@@ -7,8 +7,8 @@ Feature: User can bring a concern back from done
       | first_name | last_name | email              |
       | Steve      | Shin      | steve@crowdtap.com |
     And the following Concern exists:
-      | content          | complete |
-      | Unhealthy snacks | true     |
+      | content          | complete | company                      |
+      | Unhealthy snacks | true     | { "domain": "crowdtap.com" } |
     When I am on the site
     Then I should see "Unhealthy snacks" within the complete concerns list
     When I click the pending link within the "Unhealthy snacks" concerns element

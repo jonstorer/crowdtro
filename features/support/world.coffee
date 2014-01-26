@@ -42,12 +42,15 @@ class World
       when 'enter' then 13
       else 0
 
-  Factory: (factoryName, attrs = {}) ->
-    for key, value in attrs
+  toJSON: (attrs = {}) ->
+    for key, value of attrs
       try
         attrs[key] = JSON.parse(value)
       catch error
-        # nothing
-    Rosie.Factory.attributes(factoryName, attrs)
+        #nada
+    attrs
+
+  Factory: (factoryName, attrs = {}) ->
+    Rosie.Factory.attributes(factoryName, @toJSON(attrs))
 
 module.exports.World = World

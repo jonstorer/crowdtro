@@ -9,18 +9,16 @@ module.exports = ->
   @Before (next) ->
     mongoose.connection.db.dropDatabase next
 
-  @Given /^a "([^"]+)" Concern exists$/, (content, next) ->
-    attrs = { content: content }
-    Concern.create attrs, next
-
   @Given /^the following Concern(?:s)? exist(?:s)?:$/, (table, next) ->
-    concerns = for concern in table.hashes()
-      concern.complete = concern.complete == 'true'
-      concern
+    concerns = (@toJSON(concern) for concern in table.hashes())
 
     do create = ->
       if concern = concerns.shift()
-        Concern.create concern, create
+        company = concern.company
+        delete concern.company
+        Company.findOrCreate { domain: company.domain }, (err, company) ->
+          concern.company = company.id
+          Concern.create concern, create
       else
         next()
 

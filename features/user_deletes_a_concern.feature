@@ -4,8 +4,8 @@ Feature: User can add a concern
 
   Scenario: User deletes a concern
     Given the following Concern exists:
-      | content |
-      | So Many |
+      | content | company                      |
+      | So Many | { "domain": "crowdtap.com" } |
     And I am logged in as:
       | first_name | last_name | email              |
       | Steve      | Shin      | steve@crowdtap.com |
