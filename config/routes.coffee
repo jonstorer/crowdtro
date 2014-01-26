@@ -18,7 +18,6 @@ module.exports = (app) ->
   app.get '/',        homes.show
   app.get '/login',   homes.login
   app.get '/logout',  homes.logout
-  app.get '/old',     homes.old
 
   strategy = passport.authenticate 'google',
     successRedirect: '/old.html'

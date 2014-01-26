@@ -11,6 +11,3 @@ module.exports =
     req.logout()
     delete req.session.company
     res.redirect('/login')
-
-  old: (req, res) ->
-    res.render 'old', { companyId: req.session.company.id }
