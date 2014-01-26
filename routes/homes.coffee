@@ -9,6 +9,7 @@ module.exports =
 
   logout: (req, res) ->
     req.logout()
+    delete req.session.company
     res.redirect('/login')
 
   old: (req, res) ->
