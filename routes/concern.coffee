@@ -1,37 +1,47 @@
-Concern = require '../models/concern'
+Concern = require('mongoose').models.Concern
 
 exports.index = (req, res) ->
   query = JSON.parse(JSON.stringify(req.query || {}))
+  query.company = req.session.company.id
+
   Concern.find query, (err, concerns) ->
     res.json concerns
 
 exports.show = (req, res) ->
-  Concern.findById req.route.params.id, (err, concern) ->
+  query =
+    _id:     req.route.params.id
+    copmany: req.session.company.id
+
+  Concern.findOne query, (err, concern) ->
     throw err if err
     res.json concern
 
 exports.create = (req, res) ->
-  concernAttributes = req.body
-  delete concernAttributes.id
+  params = req.body
+  delete params.id
+  params.company = req.session.company.id
 
-  Concern.create concernAttributes, (err, concern) ->
+  Concern.create params, (err, concern) ->
     throw err if (err)
     res.json 201, concern
 
 exports.update = (req, res) ->
-  id = req.route.params.id
+  query =
+    _id:     req.route.params.id
+    company: req.session.company.id
+
   attributes = req.body
   delete attributes.id
 
-  Concern.findByIdAndUpdate id, { $set: attributes }, (err, concern) ->
+  Concern.findOneAndUpdate query, attributes, (err, concern) ->
     throw err if err
     res.json concern
 
 exports.delete = (req, res) ->
-  id = req.route.params.id
-  attributes = req.body
-  delete attributes.id
+  query =
+    _id:     req.route.params.id
+    company: req.session.company.id
 
-  Concern.findByIdAndRemove id, (err, concern) ->
+  Concern.findOneAndRemove query, (err, concern) ->
     throw err if err
     res.json concern
