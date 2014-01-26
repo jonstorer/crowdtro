@@ -19,7 +19,6 @@ params = options[process.env.NODE_ENV] || options.default
 
 passport.use new GoogleStrategy params, (identifier, profile, callback) ->
   if domain = profile.emails[0].value.match(new RegExp(/[^@]+$/i))[0]
-    console.log domain
     if domain == 'gmail.com'
       callback null, false, { message: 'Sorry, you cannot use an @gmail.com address to login' }
     else

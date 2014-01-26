@@ -9,9 +9,7 @@ class HeaderController extends Spine.Controller
 
     Me.one 'refresh', =>
       Company.one 'refresh', =>
-
         @html require('views/header')(me: Me.last(), company: Company.last())
-
       Company.fetch()
     Me.fetch()
 
