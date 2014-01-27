@@ -1,11 +1,11 @@
+process.env.PORT     ||= 4404
+process.env.NODE_ENV ||= 'test'
+
 should      = require 'should'
 selectors   = require './selectors'
 Rosie       = require 'rosie'
 
 require '../../spec/factories'
-
-process.env.PORT     ||= 4404
-process.env.NODE_ENV ||= 'test'
 
 server = require '../../server'
 
