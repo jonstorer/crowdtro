@@ -1,5 +1,6 @@
 homes        = require('../routes/homes')
 concern      = require('../routes/concern')
+company      = require('../routes/company')
 me           = require('../routes/me')
 spine        = require('../routes/spine')
 authenticate = require('../routes/middleware').authenticate
@@ -13,7 +14,6 @@ module.exports = (app) ->
 
   app.all routes, authenticate
 
-  app.get '/',        homes.show
   app.get '/login',   homes.login
   app.get '/logout',  homes.logout
 
@@ -26,6 +26,9 @@ module.exports = (app) ->
   app.get '/auth/google_apps/callback', strategy
 
   app.get '/me', me.show
+
+  app.get '/company', company.show
+  app.put '/company', company.update
 
   app.get    '/concerns',     concern.index
   app.get    '/concerns/:id', concern.show

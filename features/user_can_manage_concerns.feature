@@ -7,8 +7,8 @@ Feature: User can manage concerns
       | first_name | last_name | email              |
       | Steve      | Shin      | steve@crowdtap.com |
     And the following Concern exists:
-      | content |
-      | So Many |
+      | content | company                      |
+      | So Many | { "domain": "crowdtap.com" } |
     When I am on the site
 
   Scenario: User adds concern

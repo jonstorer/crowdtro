@@ -5,14 +5,14 @@
       <span class='icon-bar'></span>
       <span class='icon-bar'></span>
     </button>
-    <a class='brand' href='#'>Crowdtro</a>
+    <a class='brand' href='#'><%= @company.name || @company.domain %></a>
+    <form class='navbar-form pull-left' id='edit_company' style='display:none;'>
+      <input class='span4' type='text' name='name' value='<%= @company.name %>'>
+    </form>
     <div class='nav-collapse collapse'>
       <p class='navbar-text pull-right'>
-        <%= @first_name %> | <a href='/logout' class='navbar-link'>Logout</a>
+        <%= @me.first_name %> | <a href='/logout' class='navbar-link'>Logout</a>
       </p>
-      <ul class='nav'>
-        <li class='active'><a href='#'>Retro</a></li>
-      </ul>
     </div><!--/.nav-collapse -->
   </div>
 </div>

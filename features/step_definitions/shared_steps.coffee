@@ -2,6 +2,7 @@ should   = require 'should'
 mongoose = require 'mongoose'
 Concern  = mongoose.models.Concern
 User     = mongoose.models.User
+Company  = mongoose.models.Company
 
 module.exports = ->
   @World = require('../support/world').World
@@ -10,15 +11,20 @@ module.exports = ->
     @resetBrowser next
 
   @Then /^I (?:am logged|log) in as:$/, (table, next) ->
+    domain = table.hashes()[0].email.match(new RegExp(/[^@]+$/i))
     login = (user) =>
-      @visit "/login_for_test/#{user.id}", next
+      Company.findOrCreate { domain: domain }, (err, company) =>
+        user.company = company.id
+        user.save (err) =>
+          @visit "/login_for_test/#{user.id}", next
 
-    User.findOne table.hashes()[0], (err, user) =>
+    userAttributes = @Factory('User', table.hashes()[0])
+    User.findOne userAttributes, (err, user) =>
       console.log err if err
       if user
         login(user)
       else
-        User.create table.hashes()[0], (err, user) =>
+        User.create userAttributes, (err, user) =>
           console.log err if err
           login(user)
 

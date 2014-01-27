@@ -650,6 +650,10 @@
       "version": "1.0.9",
       "from": "spine@1.0.9"
     },
+    "rosie": {
+      "version": "0.2.0",
+      "from": "rosie@latest"
+    },
     "should": {
       "version": "1.2.2",
       "from": "should@1.2.2"

@@ -1,8 +1,11 @@
-should    = require 'should'
-selectors = require './selectors'
-
 process.env.PORT     ||= 4404
 process.env.NODE_ENV ||= 'test'
+
+should      = require 'should'
+selectors   = require './selectors'
+Rosie       = require 'rosie'
+
+require '../../spec/factories'
 
 server = require '../../server'
 
@@ -11,14 +14,14 @@ Browser.site = "http://localhost:#{process.env.PORT}"
 Browser.debug = true
 
 class World
-  constructor: (callback) ->
+  constructor: (next) ->
     @browser = new Browser
-    callback(@)
+    next(@)
 
-  selectorFor: (locator, callback = (s) -> s) ->
+  selectorFor: (locator, next = (s) -> s) ->
     for regexp, path of selectors
       if match = locator.match(new RegExp(regexp))
-        return path.apply @, match.slice(1).concat [ callback ]
+        return path.apply @, match.slice(1).concat [ next ]
 
   resetBrowser : (next) ->
     console.log '#TODO fix me'
@@ -38,5 +41,16 @@ class World
     switch type
       when 'enter' then 13
       else 0
+
+  toJSON: (attrs = {}) ->
+    for key, value of attrs
+      try
+        attrs[key] = JSON.parse(value)
+      catch error
+        #nada
+    attrs
+
+  Factory: (factoryName, attrs = {}) ->
+    Rosie.Factory.attributes(factoryName, @toJSON(attrs))
 
 module.exports.World = World
