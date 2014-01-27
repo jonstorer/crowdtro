@@ -41,5 +41,7 @@ class HeaderController extends Spine.Controller
       company.fromForm e.currentTarget
       company.one 'save', @render
       company.save()
+    else if e.which is 27
+      @render()
 
 module.exports = HeaderController
