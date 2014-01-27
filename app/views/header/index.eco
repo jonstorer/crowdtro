@@ -6,13 +6,13 @@
       <span class='icon-bar'></span>
     </button>
     <a class='brand' href='#'><%= @company.name || @company.domain %></a>
+    <form class='navbar-form pull-left' id='edit_company' style='display:none;'>
+      <input class='span2' type='text' name='name' value='<%= @company.name %>'>
+    </form>
     <div class='nav-collapse collapse'>
       <p class='navbar-text pull-right'>
         <%= @me.first_name %> | <a href='/logout' class='navbar-link'>Logout</a>
       </p>
-      <ul class='nav'>
-        <li class='active'><a href='#'>Retro</a></li>
-      </ul>
     </div><!--/.nav-collapse -->
   </div>
 </div>

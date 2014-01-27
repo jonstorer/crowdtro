@@ -8,4 +8,5 @@ module.exports = (app) ->
       app.use (req, res, next) ->
         res.send('Page not found', 404)
       app.use (error, req, res, next) ->
+        console.log error
         res.send('500: Internal Server Error', 500)

@@ -32,6 +32,9 @@ module.exports =
 
   # Static Selectors
 
+  '^the edit company form$':       (n) -> n '#edit_company'
+  '^the company name field$':      (n) -> n '#edit_company input[name="name"]'
+  '^the header$':                  (n) -> n '#header'
   '^the new concern form$':        (n) -> n 'form#new-concern'
   '^the textarea$':                (n) -> n 'textarea'
   '^the page$':                    (n) -> n 'body'

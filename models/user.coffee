@@ -32,4 +32,9 @@ userSchema.statics.createFromAuthHash = (auth_hash, callback) ->
     company:    auth_hash.company.id
   @model('User').create attributes, callback
 
+# methods
+userSchema.methods.toJSON = ->
+  id:         @id
+  first_name: @first_name
+
 module.exports = mongoose.model('User', userSchema)

@@ -14,14 +14,14 @@ Browser.site = "http://localhost:#{process.env.PORT}"
 Browser.debug = true
 
 class World
-  constructor: (callback) ->
+  constructor: (next) ->
     @browser = new Browser
-    callback(@)
+    next(@)
 
-  selectorFor: (locator, callback = (s) -> s) ->
+  selectorFor: (locator, next = (s) -> s) ->
     for regexp, path of selectors
       if match = locator.match(new RegExp(regexp))
-        return path.apply @, match.slice(1).concat [ callback ]
+        return path.apply @, match.slice(1).concat [ next ]
 
   resetBrowser : (next) ->
     console.log '#TODO fix me'

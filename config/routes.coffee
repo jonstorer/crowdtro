@@ -14,7 +14,6 @@ module.exports = (app) ->
 
   app.all routes, authenticate
 
-  app.get '/',        homes.show
   app.get '/login',   homes.login
   app.get '/logout',  homes.logout
 
@@ -29,6 +28,7 @@ module.exports = (app) ->
   app.get '/me', me.show
 
   app.get '/company', company.show
+  app.put '/company', company.update
 
   app.get    '/concerns',     concern.index
   app.get    '/concerns/:id', concern.show
