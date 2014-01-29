@@ -1,6 +1,7 @@
 should   = require 'should'
 mongoose = require '../../models/db'
 Concern  = mongoose.models.Concern
+Company  = mongoose.models.Company
 
 module.exports = ->
   @World = require('../support/world').World
@@ -20,5 +21,14 @@ module.exports = ->
     do create = ->
       if concern = concerns.shift()
         Concern.create concern, create
+      else
+        next()
+
+  @Given /^the following Company exists:$/, (table, next) ->
+    companies = table.hashes()
+
+    do create = ->
+      if company = companies.shift()
+        Company.create company, create
       else
         next()
