@@ -4,6 +4,7 @@ require './config/monitoring'
 
 app = require('express')()
 
+require('./config/application')(app)
 require("./config/environments/#{env}")(app)
 require('./config/routes')(app)
 

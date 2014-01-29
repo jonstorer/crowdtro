@@ -1,7 +1,7 @@
 passport = require 'passport'
 express  = require 'express'
 flash    = require 'connect-flash'
-path     = require('path')
+path     = require 'path'
 
 module.exports = (app, next) ->
   app.configure ->
@@ -18,4 +18,3 @@ module.exports = (app, next) ->
     app.use passport.session()
     app.use app.router
     app.use express.static path.join(__dirname, '..', 'public')
-    next(app)
