@@ -1,6 +1,6 @@
 should   = require 'should'
-mongoose = require '../../models/db'
-Concern  = mongoose.models.Concern
+mongoose = require('mongoose')
+Concern  = require('../../models').Concern
 
 module.exports = ->
   @World = require('../support/world').World

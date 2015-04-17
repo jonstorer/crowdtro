@@ -1,13 +1,12 @@
 path = require('path')
 
-module.exports =
-  show: (req, res) ->
-    res.status(200).sendfile path.join __dirname, '..', 'public', 'index.html'
+module.exports.show = (req, res, next) ->
+  res.render 'show'
 
-  login: (req, res) ->
-    res.render 'login', { message: req.flash 'error' }
+module.exports.login = (req, res, next) ->
+  res.render 'login', { message: req.flash 'error' }
 
-  logout: (req, res) ->
-    req.logout()
-    delete req.session.passport
-    res.redirect('/login')
+module.exports.logout = (req, res, next) ->
+  req.logout()
+  delete req.session.passport
+  res.redirect('/login')
