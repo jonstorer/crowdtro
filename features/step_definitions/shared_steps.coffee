@@ -10,7 +10,17 @@ module.exports = ->
     @resetBrowser next
 
   @Then /^I (?:am logged|log) in as:$/, (table, next) ->
-    next()
+    login = (user) =>
+      @visit "/login_for_test/#{user.id}", next
+
+    User.findOne table.hashes()[0], (err, user) =>
+      console.log err if err
+      if user
+        login(user)
+      else
+        User.create table.hashes()[0], (err, user) =>
+          console.log err if err
+          login(user)
 
   @Then /^I wait (\d+) seconds?$/, (seconds, next) ->
     setTimeout next, parseInt(seconds) * 1000

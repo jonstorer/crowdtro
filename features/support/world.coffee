@@ -4,7 +4,7 @@ selectors = require './selectors'
 process.env.PORT     ||= 4404
 process.env.NODE_ENV ||= 'test'
 
-server = require '../../'
+server = require '../../server'
 
 Browser = require('zombie')
 Browser.site = "http://localhost:#{process.env.PORT}"

@@ -3,22 +3,22 @@
   "version": "0.0.1",
   "dependencies": {
     "coffee-script": "1.6.2",
-    "connect-flash": "~0.1.0",
+    "connect-flash": "0.1.0",
     "ejs": "0.8.3",
     "es5-shimify": "~0.0.1",
-    "express": "~3.20.2",
+    "express": "3.4.4",
     "hem": "0.2.9",
     "jqueryify": "~0.0.1",
     "json2ify": "~0.0.1",
     "mongoose": "3.6.4",
     "mongoose-times": "0.1.0",
     "nodetime": "0.8.12",
-    "passport": "~0.1.17",
+    "passport": "0.1.17",
     "passport-google": "0.3.0",
     "raygun": "latest",
     "spine": "1.0.9",
-    "passport-google-oauth": "~0.2.0",
-    "fs-readdir-recursive": "~0.1.1"
+    "fs-readdir-recursive": "~0.1.1",
+    "passport-google-oauth": "~0.2.0"
   },
   "devDependencies": {
     "cucumber": "0.3.0",
