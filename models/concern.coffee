@@ -1,4 +1,4 @@
-mongoose   = require './db'
+mongoose = require 'mongoose'
 timestamps = require 'mongoose-times'
 
 concernSchema = new mongoose.Schema

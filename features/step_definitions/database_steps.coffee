@@ -1,5 +1,6 @@
 should   = require 'should'
-mongoose = require '../../models/db'
+models   = require '../../models'
+mongoose = require 'mongoose'
 Concern  = mongoose.models.Concern
 
 module.exports = ->

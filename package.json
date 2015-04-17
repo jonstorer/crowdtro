@@ -16,20 +16,23 @@
     "passport": "0.1.17",
     "passport-google": "0.3.0",
     "raygun": "latest",
-    "spine": "1.0.9"
+    "spine": "1.0.9",
+    "fs-readdir-recursive": "~0.1.1",
+    "passport-google-oauth": "~0.2.0",
+    "coffee-errors": "~0.8.6"
   },
-  "devDependencies" : {
+  "devDependencies": {
     "cucumber": "0.3.0",
     "jasmine-node": "1.0.26",
     "nock": "0.17.3",
     "should": "1.2.2",
     "zombie": "2.0.0-alpha24"
   },
-  "engines" : {
-    "node" : "0.10.24"
+  "engines": {
+    "node": "0.10.24"
   },
   "engineStrict": true,
-  "scripts" : {
+  "scripts": {
     "test": "./node_modules/.bin/cucumber.js -t ~@wip"
   }
 }
