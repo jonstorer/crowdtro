@@ -1,5 +1,7 @@
 require './config/monitoring'
 
+require 'coffee-errors'
+
 config   = require './config'
 handle   = require './config/handlers'
 express  = require 'express'
