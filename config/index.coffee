@@ -9,7 +9,7 @@ config =
   session: { secret: 'sekret-so-super' }
   google:
     clientID: '533546687609-p8p1p5rggtvidudf5vifev2bh2rsm7ct.apps.googleusercontent.com'
-    clientSecret: 'bX0Dm_dV3_FRGxTnNNGsHjSX'
+    clientSecret: 'f18889he46NfXiFGcxz4ypLv'
     callbackURL: 'http://localhost:3000/auth/google/callback'
 
 envMap =
