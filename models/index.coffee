@@ -1,6 +1,7 @@
 config = require '../config'
 
-require('mongoose').connect config.mongo.url, ->
+require('mongoose').connect config.mongo.url, (err) ->
+  console.log 'error', err
   console.log 'connected to', config.mongo.url
 
 require('fs-readdir-recursive')(__dirname).forEach (file) ->
