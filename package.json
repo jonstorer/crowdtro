@@ -10,7 +10,7 @@
     "hem": "0.2.9",
     "jqueryify": "~0.0.1",
     "json2ify": "~0.0.1",
-    "mongoose": "~4.1.10",
+    "mongoose": "~3.8.0",
     "mongoose-times": "0.1.0",
     "nodetime": "0.8.12",
     "passport": "0.1.17",
@@ -25,8 +25,8 @@
     "cucumber": "0.3.0",
     "jasmine-node": "1.0.26",
     "nock": "0.17.3",
-    "should": "1.2.2",
-    "zombie": "2.0.0-alpha24"
+    "should": "2.1.1",
+    "zombie": "2.5.1"
   },
   "engines": {
     "node": "0.10.24"
